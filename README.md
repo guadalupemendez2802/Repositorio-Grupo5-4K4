@@ -21,7 +21,7 @@
 |-------------------------------|--------|
 | Guadalupe Mendez              | 86727  |
 | Montes Gonzalo                | 89603  |
-| Martin Aguirre Gomez Corta    | 89736  |
+| Martin Aguirregomezcorta      | 89736  |
 | Joaquín Grasso                | 89952  |
 | Ivo Sosa                      | 91078  |
 | Lourdes Belém Pugliese        | 95196  |

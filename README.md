@@ -15,8 +15,14 @@ Repositorio-Grupo5-4K4/
 │
 ├── material_de_la_catedra/          # Material oficial provisto por la cátedra
 │   ├── bibliografia/                # Libros y referencias bibliográficas
+│   │   ├── agilismo
+│   │   ├── gestion_de_coniguracion_de_software
+│   │   ├── ingenieria_de_software
+│   │   ├── lean_y_kanban
+│   │   ├── test_driven_development
+│   │   └── testing_de_software
 │   ├── presentaciones_clases/       # Diapositivas y presentaciones de clase
-│   └── templates/  # Plantillas oficiales
+│   └── templates/                   # Plantillas oficiales
 │       └── parciales
 │       └── trabajos_practicos
 │         

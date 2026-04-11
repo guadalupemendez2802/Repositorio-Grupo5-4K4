@@ -94,12 +94,20 @@ Para mantener un historial limpio y consistente, todos los commits deben seguir 
 
 **Archivos y carpetas:** Nombres descriptivos en minúscula y separados por guión bajo (_).
 
-| Ítem de configuración | Regla de nombrado             |
-|----------------------|--------------------------------|
-| Notas de clase       | fecha_<temas_de_la_clase>.pdf  |
-| Consignas TP         | consigna_<tp>.pdf              |
-| Entrega TP           | entrega_<tp>.<ext>             |
-| Código fuente        | nombre.<ext>                   |
+| Ítem de configuración   | Regla de nombrado                |
+|-------------------------|----------------------------------|
+| Notas de clase          | fecha_<temas_de_la_clase>.pdf    |
+| Consignas TP            | consigna_<tp>.pdf                |
+| Entrega TP              | entrega_<tp>.<ext>               |
+| Código fuente           | nombre.<ext>                     |
+| Bibliografía            | b_<nombre_libro>.pdf             |
+| Notas de Clases         | notas_<mm-dd>.<ext> |
+| Resúmenes               | resumen_parc_<nro>.<ext>         |
+| Cronograma              | cronograma_2026.<ext>            |
+| Templates               | temp_<nombre_template>.<ext>     |
+| Presentaciones de Clase | temp_<nombre_template>.<ext>     |
+| Clases Grabadas         | clases_grabadas_<año>.xlsx       |
+
 
 ---
 

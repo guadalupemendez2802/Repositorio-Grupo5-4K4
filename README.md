@@ -10,26 +10,50 @@ Universidad Tecnológica Nacional — Facultad Regional Córdoba (UTN-FRC).
 
 ```
 Repositorio-Grupo5-4K4/
-├── material_de_la_catedra/         # Material oficial provisto por la cátedra
-│   ├── bibliografia/               # Libros y referencias bibliográficas
-│   ├── presentaciones_clases/      # Diapositivas y presentaciones de clase
+├── material_de_la_catedra/          # Material oficial provisto por la cátedra
+│   ├── bibliografia/                # Libros y referencias bibliográficas
+│   ├── presentaciones_clases/       # Diapositivas y presentaciones de clase
 │   └── templates_para_practicos_y_parciales/  # Plantillas oficiales
+│         
+├── material_extra/                  # Material complementario generado por el grupo
+│   ├── notas_de_clases              # Apuntes tomados durante las clases
+│   │   ├── Agustin
+│   │   ├── Alan
+│   │   ├── Gonzalo
+│   │   ├── Guadalupe
+│   │   ├── Ivo
+│   │   ├── Joaquin
+│   │   ├── Juan
+│   │   ├── Lourdes
+│   │   ├── Martin
+│   │   ├── Miqueas
+│   │   ├── Nazareno
+│   │   └── Sofia
+│   └── resumen                      # Resúmenes elaborados por el grupo
+│       ├── Agustin
+│       ├── Alan
+│       ├── Gonzalo
+│       ├── Guadalupe
+│       ├── Ivo
+│       ├── Joaquin
+│       ├── Juan
+│       ├── Lourdes
+│       ├── Martin
+│       ├── Miqueas
+│       ├── Nazareno
+│       └── Sofia
 │
-├── material_extra/                 # Material complementario generado por el grupo
-│   ├── resumen/                    # Resúmenes elaborados por el grupo
-│   └── notas_de_clases/            # Apuntes tomados durante las clases
+├── planificacion/                   # Planificación y cronograma del grupo
 │
-├── planificacion/                  # Planificación y cronograma del grupo
+├── practicos/                       # Trabajos prácticos
+│   └── tp_<N>/                      # Carpeta por cada trabajo práctico
+│       ├── consigna/                # Enunciado del práctico
+│       └── entrega/                 # Resolución entregada
 │
-├── practicos/                      # Trabajos prácticos
-│   └── tp<N>/                      # Carpeta por cada trabajo práctico
-│       ├── consigna/               # Enunciado del práctico
-│       └── entrega/                # Resolución entregada
-│
-└── trabajos_investigacion_grupal/  # Trabajos de investigación grupales
-    └── ti<N>/                      # Carpeta por cada trabajo de investigación
-        ├── consigna/               # Enunciado del trabajo
-        └── presentacion/          # Presentación elaborada
+└── trabajos_investigacion_grupal/   # Trabajos de investigación grupales
+    └── ti_<N>/                      # Carpeta por cada trabajo de investigación
+        ├── consigna/                # Enunciado del trabajo
+        └── presentacion/            # Presentación elaborada
 ```
 
 ---

@@ -16,7 +16,9 @@ Repositorio-Grupo5-4K4/
 ├── material_de_la_catedra/          # Material oficial provisto por la cátedra
 │   ├── bibliografia/                # Libros y referencias bibliográficas
 │   ├── presentaciones_clases/       # Diapositivas y presentaciones de clase
-│   └── templates_para_practicos_y_parciales/  # Plantillas oficiales
+│   └── templates/  # Plantillas oficiales
+│       └── parciales
+│       └── trabajos_practicos
 │         
 ├── material_extra/                  # Material complementario generado por el grupo
 │   ├── notas_de_clases              # Apuntes tomados durante las clases
@@ -81,6 +83,38 @@ Para mantener un historial limpio y consistente, todos los commits deben seguir 
 - `refactor` — Reorganización sin cambio de contenido
 
 ---
+
+## Reglas de Nombrado
+
+**Archivos y carpetas:** Nombres descriptivos en minúscula y separados por guión bajo (_).
+
+| Ítem de configuración | Regla de nombrado             |
+|----------------------|--------------------------------|
+| Notas de clase       | fecha_<temas_de_la_clase>.pdf  |
+| Consignas TP         | consigna_<tp>.pdf              |
+| Entrega TP           | entrega_<tp>.<ext>             |
+| Código fuente        | nombre.<ext>                   |
+
+---
+
+## Glosario
+
+| Siglas | Significado                                      |
+|--------|--------------------------------------------------|
+| N      | Número de ítem (1, 2, ..., n).                   |
+| tp     | Trabajo práctico.                                | 
+| ti     | Trabajo de investigación.                        |
+| ext    | Extensión del archivo (.pdf, .jpg, .py, ...).    |
+| mm-dd  | Fecha en el formato mm-dd (Mes - Día).           |
+| LB     | Línea base.                                      |
+
+---
+
+## Criterio de Línea Base
+
+Cada línea base será definida luego de la entrega de un trabajo práctico grupal.
+Consideramos que con la entrega el estado del proyecto ha sido revisado y validado por todos los integrantes del grupo.
+
 
 ## Flujo de trabajo
 

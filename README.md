@@ -1,8 +1,35 @@
 # Repositorio-Grupo5-4K4
 
-Repositorio grupal de la materia **Ingeniería y Calidad de Software** — Curso 4K4, Grupo 5.
+**Universidad Tecnológica Nacional**  
+**Facultad Regional Córdoba (FRC)**  
+**Ingeniería en Sistemas de Información**
 
-Universidad Tecnológica Nacional — Facultad Regional Córdoba (UTN-FRC).
+## Ingeniería y Calidad de Software
+
+**Trabajo Práctico:** "Herramientas de SCM"  
+**Año:** 2026  
+**Curso:** 4K4  
+**Grupo:** 5
+
+**Repositorio:** https://github.com/guadalupemendez2802/Repositorio-Grupo5-4K4
+
+---
+
+## Integrantes del Grupo
+
+| Nombre                        | Legajo |
+|-------------------------------|--------|
+| Guadalupe Mendez              | 86727  |
+| Montes Gonzalo                | 89603  |
+| Martin Aguirre Gomez Corta    | 89736  |
+| Joaquín Grasso                | 89952  |
+| Ivo Sosa                      | 91078  |
+| Lourdes Belém Pugliese        | 95196  |
+| Alan Yair Ghibaudo            | 97570  |
+| Miqueas Enry Paéz             | 98750  |
+| Nazareno Derico Farrando      | 400744 |
+| Agustin Perez                 | 404396 |
+| Juan Bruera                   | 431286 |
 
 ---
 
@@ -10,83 +37,72 @@ Universidad Tecnológica Nacional — Facultad Regional Córdoba (UTN-FRC).
 
 ```
 Repositorio-Grupo5-4K4/
-├── agente_push/                     # Instrucciones y configuración para el agente de push
-│   └── instrucciones.md             # Guía de convenciones de commits y procedimiento de push
+├── agente_push/                          # Instrucciones y configuración para el agente de push
+│   └── instrucciones.md                  # Guía de convenciones de commits y procedimiento de push
 │
-├── material_de_la_catedra/          # Material oficial provisto por la cátedra
-│   ├── bibliografia/                # Libros y referencias bibliográficas
-│   │   ├── agilismo
-│   │   ├── gestion_de_coniguracion_de_software
-│   │   ├── ingenieria_de_software
-│   │   ├── lean_y_kanban
-│   │   ├── test_driven_development
-│   │   └── testing_de_software
-│   ├── presentaciones_clases/       # Diapositivas y presentaciones de clase
-│   └── templates/                   # Plantillas oficiales
-│       └── parciales
-│       └── trabajos_practicos
+├── material_de_la_catedra/               # Material oficial provisto por la cátedra
+│   ├── bibliografia/                     # Libros y referencias bibliográficas
+│   │   ├── agilismo/
+│   │   ├── gestion_de_configuracion_de_software/
+│   │   ├── ingenieria_de_software/
+│   │   ├── lean_y_kanban/
+│   │   ├── test_driven_development/
+│   │   └── testing_de_software/
+│   ├── presentaciones_clases/            # Diapositivas y presentaciones de clase
+│   └── templates_para_practicos_y_parciales/  # Plantillas oficiales
+│       ├── parciales/
+│       └── trabajos_practicos/
 │         
-├── material_extra/                  # Material complementario generado por el grupo
-│   ├── notas_de_clases              # Apuntes tomados durante las clases
-│   │   ├── Agustin
-│   │   ├── Alan
-│   │   ├── Gonzalo
-│   │   ├── Guadalupe
-│   │   ├── Ivo
-│   │   ├── Joaquin
-│   │   ├── Juan
-│   │   ├── Lourdes
-│   │   ├── Martin
-│   │   ├── Miqueas
-│   │   ├── Nazareno
-│   │   └── Sofia
-│   └── resumen                      # Resúmenes elaborados por el grupo
-│       ├── Agustin
-│       ├── Alan
-│       ├── Gonzalo
-│       ├── Guadalupe
-│       ├── Ivo
-│       ├── Joaquin
-│       ├── Juan
-│       ├── Lourdes
-│       ├── Martin
-│       ├── Miqueas
-│       ├── Nazareno
-│       └── Sofia
+├── material_extra/                       # Material complementario generado por el grupo
+│   ├── notas_de_clases/                  # Apuntes tomados durante las clases
+│   │   ├── notas_<mm-dd>.<ext>
+│   └── resumen/                          # Resúmenes elaborados por el grupo
+│       └── resumen_parc_<nro>.<ext>
 │
-├── planificacion/                   # Planificación y cronograma del grupo
+├── planificacion/                        # Planificación y cronograma del grupo
+│   └── cronograma_<año>_<mm-dd>.<ext>
 │
-├── practicos/                       # Trabajos prácticos
-│   └── tp_<N>/                      # Carpeta por cada trabajo práctico
-│       ├── consigna/                # Enunciado del práctico
-│       └── entrega/                 # Resolución entregada
+├── practicos/                            # Trabajos prácticos
+│   └── tp_<N>/                           # Carpeta por cada trabajo práctico
+│       ├── consigna/
+│       │   └── consigna_<tp>.pdf
+│       ├── entrega/
+│       │   └── entrega_<tp>.<ext>
+│       └── clases_grabadas_<año>.xlsx
 │
-└── trabajos_investigacion_grupal/   # Trabajos de investigación grupales
-    └── ti_<N>/                      # Carpeta por cada trabajo de investigación
-        ├── consigna/                # Enunciado del trabajo
-        └── presentacion/            # Presentación elaborada
+└── trabajos_investigacion_grupal/        # Trabajos de investigación grupales
+    └── ti_<N>/                           # Carpeta por cada trabajo de investigación
+        ├── consigna/
+        │   └── consigna_<ti>.pdf
+        └── presentacion/
+            └── <nro_presentacion>_<nombre_presentacion>.<ext>
 ```
+
+**Notas:**
+- Las carpetas `tp_<N>` y `ti_<N>` se crean a medida que se asignan los trabajos durante la cursada.
+- `<N>` representa el número del trabajo (1, 2, 3, etc.)
+- `<ext>` representa la extensión del archivo (.pdf, .docx, .py, etc.)
+- `<mm-dd>` representa la fecha en formato mes-día
 
 ---
 
-> Las carpetas `tp<N>` y `ti<N>` se crean a medida que se asignan los trabajos durante la cursada.
+## Convención de Nombrado de Commits
 
----
+Los mensajes de commit deben seguir el siguiente formato: `<prefijo>: descripción breve en español`
 
-## Convenciones de commits
+| Prefijo   | Contexto                                        |
+|-----------|------------------------------------------------|
+| `feat`    | Nueva funcionalidad o característica            |
+| `fix`     | Corrección de un error o bug                    |
+| `docs`    | Cambios o mejoras en la documentación           |
+| `refactor`| Mejora en el código sin cambiar su funcionalidad|
 
-Para mantener un historial limpio y consistente, todos los commits deben seguir el formato definido en [agente_push/instrucciones.md](agente_push/instrucciones.md).
+**Reglas adicionales:**
+- La descripción en **minúsculas**, sin punto al final, con el verbo en **presente**
+- El mensaje siempre en **español**
+- Si hay dudas entre `feat` y `docs`: si es contenido nuevo → `feat`; si es una mejora de algo existente → `docs`
 
-**Formato:**
-```
-<tipo>: <descripción breve en español>
-```
-
-**Tipos principales:**
-- `feat` — Nueva funcionalidad o contenido nuevo
-- `fix` — Correcciones de errores
-- `docs` — Cambios en documentación
-- `refactor` — Reorganización sin cambio de contenido
+Para más detalles, consultar [agente_push/instrucciones.md](agente_push/instrucciones.md).
 
 ---
 
@@ -94,71 +110,76 @@ Para mantener un historial limpio y consistente, todos los commits deben seguir 
 
 **Archivos y carpetas:** Nombres descriptivos en minúscula y separados por guión bajo (_).
 
-| Ítem de configuración   | Regla de nombrado                |
-|-------------------------|----------------------------------|
-| Notas de clase          | fecha_<temas_de_la_clase>.pdf    |
-| Consignas TP            | consigna_<tp>.pdf                |
-| Entrega TP              | entrega_<tp>.<ext>               |
-| Código fuente           | nombre.<ext>                     |
-| Bibliografía            | b_<nombre_libro>.pdf             |
-| Notas de Clases         | notas_<mm-dd>.<ext> |
-| Resúmenes               | resumen_parc_<nro>.<ext>         |
-| Cronograma              | cronograma_2026.<ext>            |
-| Templates               | temp_<nombre_template>.<ext>     |
-| Presentaciones de Clase | temp_<nombre_template>.<ext>     |
-| Clases Grabadas         | clases_grabadas_<año>.xlsx       |
-
+| Ítem de configuración       | Regla de nombrado                                   |
+|-----------------------------|-----------------------------------------------------|
+| Consignas TP                | `consigna_<tp>.pdf`                                 |
+| Consignas TI                | `consigna_<ti>.pdf`                                 |
+| Entrega TP                  | `entrega_<tp>.<ext>`                                |
+| Entrega TI                  | `entrega_<ti>.<ext>`                                |
+| Código fuente               | `nombre.<ext>`                                      |
+| Bibliografía                | `b_<nombre_libro>.pdf`                              |
+| Notas de Clases             | `notas_<mm-dd>.<ext>`                               |
+| Resúmenes                   | `resumen_parc_<nro>.<ext>`                          |
+| Cronograma                  | `cronograma_<año>_<mm-dd>.<ext>`                    |
+| Templates                   | `temp_<nombre_template>.<ext>`                      |
+| Presentaciones de Clase     | `<nro_presentacion>_<nombre_presentacion>.<ext>`    |
+| Clases Grabadas             | `clases_grabadas_<año>.xlsx`                        |
+| Instrucciones               | `instrucciones.md`                                  |
 
 ---
 
 ## Glosario
 
-| Siglas | Significado                                      |
-|--------|--------------------------------------------------|
-| N      | Número de ítem (1, 2, ..., n).                   |
-| tp     | Trabajo práctico.                                | 
-| ti     | Trabajo de investigación.                        |
-| ext    | Extensión del archivo (.pdf, .jpg, .py, ...).    |
-| mm-dd  | Fecha en el formato mm-dd (Mes - Día).           |
-| LB     | Línea base.                                      |
+| Sigla  | Significado                                   |
+|--------|-----------------------------------------------|
+| N      | Número de ítem (1, 2, ..., n)                 |
+| tp     | Trabajo práctico                              |
+| ti     | Trabajo de investigación                      |
+| ext    | Extensión del archivo (.pdf, .jpg, .py, ...)  |
+| mm-dd  | Fecha en el formato mm-dd (Mes - Día)         |
+| LB     | Línea base                                    |
+| b      | Bibliografía                                  |
+| temp   | Template                                      |
+| parc   | Parciales                                     |
 
 ---
 
 ## Criterio de Línea Base
 
-Cada línea base será definida luego de la entrega de un trabajo práctico grupal.
-Consideramos que con la entrega el estado del proyecto ha sido revisado y validado por todos los integrantes del grupo.
+Cada línea base será definida luego de la entrega de un trabajo práctico grupal. Consideramos que con la entrega el estado del proyecto ha sido revisado y validado por todos los integrantes del grupo.
 
+Las Líneas bases serán identificadas con la siguiente etiqueta: `LB_N`
+
+**Implementación:** Uso de tags en Git
+```bash
+git tag -a LB1 -m "Línea base 1"
+```
+
+---
+
+## Herramienta a utilizar para SCM
+
+### GitHub
+Accesibilidad, más utilizado para proyectos open source. Permite el manejo de versionado, diferentes ramas y resolución de conflictos.
+
+### Git
+Herramienta de líneas de comandos para commits, ramas y merges.
+
+---
 
 ## Flujo de trabajo
 
 1. Siempre hacer `git pull origin main` antes de comenzar a trabajar
 2. Realizar los cambios necesarios
 3. Usar `git add .` para preparar los cambios
-4. Crear un commit descriptivo con el tipo correspondiente
+4. Crear un commit descriptivo siguiendo la convención de nombrado
 5. Hacer `git push origin main` para subir los cambios
 
 Para más detalles, consultar [agente_push/instrucciones.md](agente_push/instrucciones.md).
 
 ---
 
-## Participantes del grupo
-
-- Agustin
-- Alan
-- Gonzalo
-- Guadalupe
-- Ivo
-- Joaquin
-- Juan
-- Lourdes
-- Martin
-- Miqueas
-- Nazareno
-- Sofia
-
----
-
 **Materia:** Ingeniería y Calidad de Software (ISW)  
-**Curso:** 4K4  
-**Universidad:** UTN-FRC
+**Curso:** 4K4 - Grupo 5  
+**Universidad:** UTN-FRC  
+**Período:** 2026

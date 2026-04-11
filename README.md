@@ -55,9 +55,31 @@ Repositorio-Grupo5-4K4/
 │         
 ├── material_extra/                       # Material complementario generado por el grupo
 │   ├── notas_de_clases/                  # Apuntes tomados durante las clases
-│   │   ├── notas_<mm-dd>.<ext>
+│   │   ├── Agustin/
+│   │   ├── Alan/
+│   │   ├── Gonzalo/
+│   │   ├── Guadalupe/
+│   │   ├── Ivo/
+│   │   ├── Joaquin/
+│   │   ├── Juan/
+│   │   ├── Lourdes/
+│   │   ├── Martin/
+│   │   ├── Miqueas/
+│   │   ├── Nazareno/
+│   │   └── Sofia/
 │   └── resumen/                          # Resúmenes elaborados por el grupo
-│       └── resumen_parc_<nro>.<ext>
+│       ├── Agustin/
+│       ├── Alan/
+│       ├── Gonzalo/
+│       ├── Guadalupe/
+│       ├── Ivo/
+│       ├── Joaquin/
+│       ├── Juan/
+│       ├── Lourdes/
+│       ├── Martin/
+│       ├── Miqueas/
+│       ├── Nazareno/
+│       └── Sofia/
 │
 ├── planificacion/                        # Planificación y cronograma del grupo
 │   └── cronograma_<año>_<mm-dd>.<ext>

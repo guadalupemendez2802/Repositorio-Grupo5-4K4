@@ -178,7 +178,7 @@ git tag -a LB_1 -m "Línea base 1"
 ### Historial de Línea Base
 | **Línea Base** | **Fecha**   | **Descripción** |
 |----------------|-------------|-----------------|
-| **LB_1**    | 14/04/2026  | Entrega de **TP4 - SCM **. Se estableció la estructura del repositorio del *Grupo N° 5*|
+| **LB_1**    | 14/04/2026  | Entrega de **TP4 - SCM**. Se estableció la estructura del repositorio del *Grupo N° 5*|
 ---
 
 ## Herramienta a utilizar para SCM

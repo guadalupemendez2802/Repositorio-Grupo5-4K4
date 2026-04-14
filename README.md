@@ -30,6 +30,7 @@
 | Nazareno Derico Farrando      | 400744 |
 | Agustin Perez                 | 404396 |
 | Juan Bruera                   | 431286 |
+| Sofía  Cardozo                | 431124 |
 
 ---
 

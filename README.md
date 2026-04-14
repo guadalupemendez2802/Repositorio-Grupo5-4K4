@@ -174,7 +174,7 @@ Las Líneas bases serán identificadas con la siguiente etiqueta: `LB_N`
 
 **Implementación:** Uso de tags en Git
 ```bash
-git tag -a LB1 -m "Línea base 1"
+git tag -a LB_1 -m "Línea base 1"
 ```
 
 ---

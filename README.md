@@ -24,7 +24,7 @@
 | Martin Aguirregomezcorta      | 89736  |
 | Joaquín Grasso                | 89952  |
 | Ivo Sosa                      | 91078  |
-| Lourdes Belém Pugliese        | 95196  |
+| Lourdes Belén Pugliese        | 95196  |
 | Alan Yair Ghibaudo            | 97570  |
 | Miqueas Enry Paéz             | 98750  |
 | Nazareno Derico Farrando      | 400744 |

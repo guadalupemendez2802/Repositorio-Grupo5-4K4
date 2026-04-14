@@ -38,7 +38,6 @@
 ```
 Repositorio-Grupo5-4K4/
 ├── agente_push/                          # Instrucciones y configuración para el agente de push
-│   └── instrucciones.md                  # Guía de convenciones de commits y procedimiento de push
 │
 ├── material_de_la_catedra/               # Material oficial provisto por la cátedra
 │   ├── bibliografia/                     # Libros y referencias bibliográficas
@@ -48,7 +47,9 @@ Repositorio-Grupo5-4K4/
 │   │   ├── lean_y_kanban/
 │   │   ├── test_driven_development/
 │   │   └── testing_de_software/
-│   ├── presentaciones_clases/            # Diapositivas y presentaciones de clase
+│   │    
+│   ├── presentaciones_clases/     # Diapositivas y presentaciones de clase
+│   │       
 │   └── templates_para_practicos_y_parciales/  # Plantillas oficiales
 │       ├── parciales/
 │       └── trabajos_practicos/
@@ -67,6 +68,7 @@ Repositorio-Grupo5-4K4/
 │   │   ├── Miqueas/
 │   │   ├── Nazareno/
 │   │   └── Sofia/
+│   │
 │   └── resumen/                          # Resúmenes elaborados por el grupo
 │       ├── Agustin/
 │       ├── Alan/
@@ -82,22 +84,19 @@ Repositorio-Grupo5-4K4/
 │       └── Sofia/
 │
 ├── planificacion/                        # Planificación y cronograma del grupo
-│   └── cronograma_<año>_<mm-dd>.<ext>
+│
+├── clases_grabadas/
 │
 ├── practicos/                            # Trabajos prácticos
 │   └── tp_<N>/                           # Carpeta por cada trabajo práctico
 │       ├── consigna/
-│       │   └── consigna_<tp>.pdf
-│       ├── entrega/
-│       │   └── entrega_<tp>.<ext>
-│       └── clases_grabadas_<año>.xlsx
+│       └── entrega/
+│      
 │
 └── trabajos_investigacion_grupal/        # Trabajos de investigación grupales
     └── ti_<N>/                           # Carpeta por cada trabajo de investigación
         ├── consigna/
-        │   └── consigna_<ti>.pdf
         └── presentacion/
-            └── <nro_presentacion>_<nombre_presentacion>.<ext>
 ```
 
 **Notas:**

@@ -50,6 +50,8 @@ Repositorio-Grupo5-4K4/
 │   │    
 │   ├── presentaciones_clases/     # Diapositivas y presentaciones de clase
 │   │       
+│   ├── clases_grabadas/
+│   │
 │   └── templates_para_practicos_y_parciales/  # Plantillas oficiales
 │       ├── parciales/
 │       └── trabajos_practicos/
@@ -84,8 +86,6 @@ Repositorio-Grupo5-4K4/
 │       └── Sofia/
 │
 ├── planificacion/                        # Planificación y cronograma del grupo
-│
-├── clases_grabadas/
 │
 ├── practicos/                            # Trabajos prácticos
 │   └── tp_<N>/                           # Carpeta por cada trabajo práctico

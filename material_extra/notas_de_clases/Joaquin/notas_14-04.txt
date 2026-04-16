@@ -1,0 +1,26 @@
+Casos de uso -> RNF y RF desde el lado de la solucion
+Agilismo -> Requerimientos a traves del usuario -> Dominio del problema
+
+HU/US -> Historia de Usuario o User Story
+Descripcion US -> "Como <Rol> quiero <Frase verbal> para <Valor de negocio>"
+Criterios de aceptacion -> Detalles de la funcionalidad para que cliente la apruebe -> "Debe/Puede"
+Pruebas de usuario o Pruebas de Aceptacion de usuario -> verifico que los criterios de aceptacion esten implementados -> "Probar <Frase Verbal> ..." -> (Pasa)(No pasa)
+
+TP1: Experto en el dominio = cliente
+*No utilizar "como usuario" porque es muy generico; Colocarle un nombre, tal como "familiar" o algo asi
+*Como los filtros tienen todos basicamente el mismo valor de negocio entonces es una unica UserStory y no varias; Tendra varios criterios de aceptacion
+
+Hacemos una UserStory entre todos
+Registrar gasto
+Como titular quiero registrar gasto para mantener un control de los gastos
+C.A.:
+    - Se debe indicar monto, tipo de gasto, fecha, si es propio o no
+    - Se puede modificar fecha por una anterior a la actual
+    - Se debe autocompletar con los datos del usuario logueado
+    - Se puede modificar el responsable del gasto
+    - Se debe autocompletar con la fecha actual
+P.U.:
+    - Probar registrar gasto indicando monto positivo, tipo de gasto, fecha y responsable (PASA)
+    - Probar modificar fecha por una pasada (PASA)
+    - Probar registrar gasto indicando un monto negativo (FALLA)
+    - Probar modificar fecha por una futura (FALLA)

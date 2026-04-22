@@ -1,0 +1,37 @@
+MVP -> Minimo producto viable -> Caracteristicas minimas -> Deben validar la hipotesis
+    -> Retroalimentacion + adaptacion 
+    -> Se define mediante un conjunto de UserStories justificandolas para validar la hipotesis. Tambien debemos justificar las UserStories que no ingresan
+
+Estimacion -> Aproximacion - prediccion
+           -> Estimamos aspectos del producto que queremos construir
+           -> Debe tener un valor probabilistico -> Puede o no ocurrir
+
+Estimacion en metodologia tradicional -> Tamaño, esfuerzo, calendario, costos, recursos criticos
+Estimacion en metodologia agil -> Estimamos las UserStories -> Complejidad, incertidumbre, esfuerzo -> Lo hacemos con fibonacci (0,1,2,3,5,8,13...)
+
+TP2: ECOHarmony Park
+UserStories incluidas en el MVP:
+- Visualizar Mapa
+- Comprar entradas
+- Ver horarios de alimentacion
+- Inscribirse a actividad
+- Consultar actividades
+
+Hipotesis MVP: Exite gente interesada en usar una app mobile para comprar entradas, visualizar actividades en mapa interactivo e Inscribirse en actividades.
+
+Desarrollamos la UserStorie Comprar entradas
+Como visitante quiero comprar entradas para poder ingresar al parque
+C.A.:
+    - Se debe ingresar fecha de visita deseada, cantidad de entradas y edad de cada visitante
+    - Se debe ingresar medio de pago
+    - Se debe enviar mail de confirmacion y entradas
+P.U.:
+    - Se ingresa una fecha anterior a la actual (FALLA)
+    - Se seleccionan mas de 10 entradas (FALLA)
+    - No se selecciona ningun medio de pago (FALLA)
+    - Probar comprar entrada ingresando fecha futura, cantidad mayor a 0 y menor a 10, seleccionando forma de pago valida y enviando mail (PASA)
+
+*Para las pruebas de usuario de FALLA se puede hacer una completa o cada una por su parte (como esta hecho aca)
+*Para las pruebas de usuario de PASA se debe hacer completa (como esta descrita aca) porque si fuera una por una no pasaria 
+
+UserStorie Canonica -> incertidumbre baja, esfuerzo bajo, Complejidad baja -> Que se tenga toda la informacion posible

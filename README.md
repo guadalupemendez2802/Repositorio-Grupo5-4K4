@@ -30,7 +30,6 @@
 | Nazareno Derico Farrando      | 400744 |
 | Agustin Perez                 | 404396 |
 | Juan Bruera                   | 431286 |
-| Sofía  Cardozo                | 431124 |
 
 ---
 
@@ -69,8 +68,7 @@ Repositorio-Grupo5-4K4/
 │   │   ├── Lourdes/
 │   │   ├── Martin/
 │   │   ├── Miqueas/
-│   │   ├── Nazareno/
-│   │   └── Sofia/
+│   │   └── Nazareno/
 │   │
 │   └── resumen/                          # Resúmenes elaborados por el grupo
 │       ├── Agustin/
@@ -83,9 +81,8 @@ Repositorio-Grupo5-4K4/
 │       ├── Lourdes/
 │       ├── Martin/
 │       ├── Miqueas/
-│       ├── Nazareno/
-│       └── Sofia/
-│
+│       └── Nazareno/
+|
 ├── planificacion/                        # Planificación y cronograma del grupo
 │
 ├── practicos/                            # Trabajos prácticos

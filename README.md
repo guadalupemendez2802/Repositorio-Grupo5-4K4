@@ -37,8 +37,6 @@
 
 ```
 Repositorio-Grupo5-4K4/
-├── agente_push/                          # Instrucciones y configuración para el agente de push
-│
 ├── material_de_la_catedra/               # Material oficial provisto por la cátedra
 │   ├── bibliografia/                     # Libros y referencias bibliográficas
 │   │   ├── agilismo/
@@ -121,8 +119,6 @@ Los mensajes de commit deben seguir el siguiente formato: `<prefijo>: descripci�
 - El mensaje siempre en **español**
 - Si hay dudas entre `feat` y `docs`: si es contenido nuevo → `feat`; si es una mejora de algo existente → `docs`
 
-Para más detalles, consultar [agente_push/instrucciones.md](agente_push/instrucciones.md).
-
 ---
 
 ## Reglas de Nombrado
@@ -196,8 +192,6 @@ Herramienta de líneas de comandos para commits, ramas y merges.
 3. Usar `git add .` para preparar los cambios
 4. Crear un commit descriptivo siguiendo la convención de nombrado
 5. Hacer `git push origin main` para subir los cambios
-
-Para más detalles, consultar [agente_push/instrucciones.md](agente_push/instrucciones.md).
 
 ---
 

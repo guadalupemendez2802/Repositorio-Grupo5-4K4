@@ -103,24 +103,6 @@ Repositorio-Grupo5-4K4/
 
 ---
 
-## Convención de Nombrado de Commits
-
-Los mensajes de commit deben seguir el siguiente formato: `<prefijo>: descripción breve en español`
-
-| Prefijo   | Contexto                                        |
-|-----------|------------------------------------------------|
-| `feat`    | Nueva funcionalidad o característica            |
-| `fix`     | Corrección de un error o bug                    |
-| `docs`    | Cambios o mejoras en la documentación           |
-| `refactor`| Mejora en el código sin cambiar su funcionalidad|
-
-**Reglas adicionales:**
-- La descripción en **minúsculas**, sin punto al final, con el verbo en **presente**
-- El mensaje siempre en **español**
-- Si hay dudas entre `feat` y `docs`: si es contenido nuevo → `feat`; si es una mejora de algo existente → `docs`
-
----
-
 ## Reglas de Nombrado
 
 **Archivos y carpetas:** Nombres descriptivos en minúscula y separados por guión bajo (_).
@@ -161,7 +143,7 @@ Los mensajes de commit deben seguir el siguiente formato: `<prefijo>: descripci�
 
 ## Criterio de Línea Base
 
-Cada línea base será definida luego de la entrega de un trabajo práctico grupal. Consideramos que con la entrega el estado del proyecto ha sido revisado y validado por todos los integrantes del grupo.
+Cada línea base será definida luego de la entrega de un trabajo práctico grupal evaluable. Consideramos que con la entrega el estado del proyecto ha sido revisado y validado por todos los integrantes del grupo.
 
 Las Líneas bases serán identificadas con la siguiente etiqueta: `LB_N`
 

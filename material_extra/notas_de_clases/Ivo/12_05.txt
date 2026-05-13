@@ -1,0 +1,79 @@
+12 de Mayo de 2026
+Esta clase empezamos a ver Testing
+
+Las CLASES DE EQUIVALENCIA son subconjuntos de valores que dan el mismo resultado, cada 
+clase de equivalencia es independiente entre si 
+
+
+Hicimos la identificacion de Clases de Equivalencia del ejercicio de Taxi Mobile
+
+Algo que buscamos siempre es que tratamos de conseguir con la menor cantidad de casos de prueba,
+PROBAR la mayor cantidad posible de clases de equivalencia
+
+Pre condicion es todo aquel dato o config que necesitas para poder llevar a cabo el caso de prueba
+La clase de equialencia es lo que vos probas en ese caso de prueba 
+
+Pre condicion no es lo mismo que clase de equivalencia
+
+Sin la pre condicion no se puede ejecutar el caso de prueba
+
+
+Clase de equivalencia 
+-> Condicion externa: es el nombre general
+-> Clase Equivalencia valida: son las clases de equivalencia, son independientes entre si, todas 
+de la misma condicion externa
+-> Clase Equivalencia Invalida: En este caso del taxi seria cualquier otro estado, o bueno se 
+puede no poner nada
+
+Los nombre de estado son de entrada porque es lo que se selecciona, y los colores son de salida
+porque es lo que despues se visibiliza
+
+Como la informacion que muestra depende del estado del taxi, entonces la info del taxi es una 
+condicion externa nueva que si se relaciona con la del estado pero como depende de cada estado
+la info que se muestra (la salida) entonces tiene que ser una condicion externa diferente
+
+
+Si tenemos una informacon que puede ser mostrada en diferentes formatos, entonces son clases de
+equivalencia diferentes, por ejemplo la patente que puede ser XX-000-XX o XXX-000
+
+
+Las clases de equivalencia de la salida siempre estan relacionadas a mensajes de error entonces una 
+vez que terminas las clases de equivalencia de entradas podes agregar una condicion externa de 
+salida 'ERRORES' y pones en clases de equivalencia invalida cada uno de los errores 
+
+
+A todas las clases de equivalencia le ponemos un numero id porque despues en los casos de prueba
+se las relaciona entonces para evitar escribir de vuelta la frase, ponemos solo el Normal
+
+Siempre hay AL MENOS un error en la salida por cada clase de equivalencia invalida de entrada,
+ahi tambien se pueden agregar los mensajes de confirmacion
+
+-------------------------------------------------------------------------------------------------
+
+
+CASOS DE PRUEBA: (por lo menos tenemos una por cada prueba de usuario de la user)
+- Nro 
+- Prioridad (Alta, Media, Baja, la alta va asociada a los casos de prueba de exito, los de 
+PASA, los de media van asociados a los de Falla, y en relacion al impacto que tienen 
+se les pone media o baja)
+- Nombre (descriptivo, por ejemplo, ver tazis con estado 'libre' por barrio existente)
+- Clases de equivalencia (todas, aca recorda que la idea es que con la menor cantidad 
+de casos de prueba puedas probar todas las clases de equivalencia)
+- Pasos
+- Resultado Esperado (Pasa, Falla)
+
+
+En las pre condiciones, cuando hablamos del usuario, no ponemos el 'usuario', si no que debemos 
+poner el nombre del usuario, que es quien ejecuta el caso de prueba, lo mismo cuando se habla de
+barrios, lugares, etc, ponemos siempre alguno 
+
+En las pre condiciones siempre va, que 'exista' aquello que deba seleccionarse 
+
+En las patentes por ejemplo tambien en la pre condicion no se pone que la patente debe existir
+se pone que ESE DATO CONCRETO debe existir 
+
+En el resultado esperado no basta con decir que se muestra la info, hay que poner QUE INFO 
+ESTA MOSTRANDO, y ponele para los mensajes de error, tambien hay que poner QUE MENSAJE DE 
+ERROR ESTA MOSTRANDO, hay que ser bien especifico ahi
+
+

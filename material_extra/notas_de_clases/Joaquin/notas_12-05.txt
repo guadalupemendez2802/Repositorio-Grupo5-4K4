@@ -1,0 +1,28 @@
+Testing Caja Negra
+
+Testing: Proceso destructivo cuyo objetivo es encontrar defectos
+
+Error vs Defecto: Ambas son fallas; se diferencian segun la etapa donde se encuentran
+Falla en etapa de implementacion -> Error
+Falla en etapa de produccion -> Defecto
+*EL OBJETIVO DEL TESTING ES ENCONTRAR DEFECTOS*
+
+Niveles de Testing
+- Testing unitario: proveer mecanismos de verificacion de la comprension de la funcionalidad
+- Testing de integracion: probar interfaces
+- Testing de sistema: probar una funcionalidad en su totalidad
+- Testing de aceptacion: validar que lo entregado cumple con el requerimiento
+
+Testing de caja blanca: conozco la estructura de implementacion (codigo)
+
+Testing de caja Negra: No conozco la estructura de implementacion; solo entradas y salidas
+    -Basado en especificaciones: particion de equivalencias, analisis de valores limites
+    -Basado en experiencia: adivinanza de defectos, testing exploratorio
+
+
+Particion de equivalencias
+    -Clases de equivalencias: subconjunto de valores que puede tomar una condicion externa para la cual el resultado de la funcionalidad es equivalente
+    -Luego de identificar las clases de equivalencia hacemos los casos de prueba 
+
+Analisis de valores limites: es una variante de particion de equivalencias. en vez de seleccionar cualquier elemento como representativo de una clase de equivalencia
+se seleccionan los bordes de una clase. 

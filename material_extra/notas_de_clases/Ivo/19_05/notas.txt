@@ -1,0 +1,28 @@
+En esta clase hicimos los ejercicios de condiciones externas, clases de 
+equivalencia valida e invalidas, de entrada y de salida para los ejercicios de 
+1. Inscribir a actividad
+2. Comprar entrada
+
+
+Es importante que si tenemos en una misma condicion externa, dos clases 
+de equivalencia que se excluyen o se relacionan demasiado, entonces eso es 
+señal de que es una sola, por ejemplo.
+
+En la actividad de comprar entrada, en la condicion externa de FECHA DE VISITA,
+un grupo puso las siguientes clases de equivalencia: 
+
+1. Fecha actual, fecha futura
+2. Formato de fecha valida
+
+Que pasa, la user me decia que la fecha deberia ser actual o futura, no podia 
+ser una fecha del pasado, pero claro, si quiero validar la segunda clase de 
+equivalencia podria poner por ejemplo 10/02/2004 y la pasaria osea se aceptaria
+porqu es un formato valido, sin embargo eso no se validaria con la clase 
+de equivalencia 1, que dice que tiene que ser actual o futura, bueno, eso es 
+señal de que tiene que ser una misma clase de equivalencia, que cubra tanto 
+que sean fechas actuales o futuras y que tengan bien el formato entonces ahi 
+cubrimos todo, no hay algo que podamos testear en una que de valido que en otra
+de invalido. 
+
+
+Bloqueante: No permite seguir el paso a paso, y se vincula a un mensaje 

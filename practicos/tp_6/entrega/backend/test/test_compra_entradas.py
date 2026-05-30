@@ -1,0 +1,104 @@
+import pytest
+from src.compra_entradas import comprar_entradas
+
+#TEST 1
+def test_compra_exitosa_con_tarjeta():
+    resultado = comprar_entradas(
+        usuario_registrado=True,
+        fecha="03/06/2026",
+        entradas=10,
+        edades=[17,22,55,33,75,67,69,21,16,17],
+        metodo_pago="tarjeta",
+        parque_abierto=True
+    )
+
+    assert resultado["estado"] == "ok"
+    assert resultado["redirigir_a"] == "mercado_pago"
+
+#TEST 2
+def test_error_si_no_indica_medio_de_pago():
+    with pytest.raises(ValueError,
+                       match="Debe seleccionar el método de pago"):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha="03/06/2026",
+            entradas=10,
+            edades=[17,22,55,33,75,67,69,21,16,17],
+            metodo_pago=None,
+            parque_abierto=True
+        )
+
+#TEST 3
+def test_error_si_compra_mas_de_diez_entradas():
+    with pytest.raises(
+        ValueError,
+        match="La cantidad de entradas debe ser menor o igual a 10"
+    ):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha="03/06/2026",
+            entradas=11,
+            edades=[20] * 11,
+            metodo_pago="tarjeta",
+            parque_abierto=True
+        )
+
+#TEST 4
+def test_error_si_usuario_no_registrado():
+    with pytest.raises(
+        PermissionError,
+        match="Debe estar registrado"
+    ):
+        comprar_entradas(
+            usuario_registrado=False,
+            fecha="03/06/2026",
+            entradas=2,
+            edades=[20, 30],
+            metodo_pago="tarjeta",
+            parque_abierto=True
+        )
+
+#TEST 5
+def test_error_si_parque_cerrado():
+    with pytest.raises(
+        ValueError,
+        match="No hay disponibilidad para la fecha seleccionada"
+    ):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha="03/06/2026",
+            entradas=2,
+            edades=[20,30],
+            metodo_pago="tarjeta",
+            parque_abierto=False
+        )
+
+#TEST 6
+def test_error_si_fecha_pasada():
+    with pytest.raises(
+        ValueError,
+        match="La fecha debe ser actual o futura"
+    ):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha="01/01/2020",
+            entradas=2,
+            edades=[20,30],
+            metodo_pago="tarjeta",
+            parque_abierto=True
+        )
+
+#TEST 7
+def test_error_si_faltan_edades():
+    with pytest.raises(
+        ValueError,
+        match="Debe indicar la edad de cada visitante"
+    ):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha="03/06/2026",
+            entradas=3,
+            edades=[20,30],
+            metodo_pago="tarjeta",
+            parque_abierto=True
+        )

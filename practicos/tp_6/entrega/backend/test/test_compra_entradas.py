@@ -1,6 +1,17 @@
 import pytest
 from src.compra_entradas import comprar_entradas
 
+@pytest.fixture
+def datos_validos():
+    return {
+        "usuario_registrado": True,
+        "fecha": "03/06/2026",
+        "entradas": 10,
+        "edades": [17,22,55,33,75,67,69,21,16,17],
+        "metodo_pago": "tarjeta",
+        "parque_abierto": True
+    }
+
 #TEST 1
 def test_compra_exitosa_con_tarjeta():
     resultado = comprar_entradas(

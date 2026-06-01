@@ -10,6 +10,7 @@ def test_registrar_compra_ok_sin_redireccion(monkeypatch):
             "estado": "ok",
             "fecha_visita": "03/06/2026",
             "cantidad": 2,
+            "total": 2500.0,
         }
 
     monkeypatch.setattr(
@@ -33,6 +34,7 @@ def test_registrar_compra_ok_sin_redireccion(monkeypatch):
         "fecha_visita": datetime.strptime("03/06/2026", "%d/%m/%Y").date(),
         "cantidad": 2,
         "redirigir": None,
+        "total": 2500.0,
     }
 
 
@@ -43,6 +45,7 @@ def test_registrar_compra_ok_con_redireccion(monkeypatch):
             "fecha_visita": "03/06/2026",
             "cantidad": 2,
             "redirigir_a": "mercado_pago",
+            "total": 3500.0,
         }
 
     monkeypatch.setattr(
@@ -62,3 +65,4 @@ def test_registrar_compra_ok_con_redireccion(monkeypatch):
     response = registrar_compra(req)
 
     assert response.redirigir == "mercado_pago"
+    assert response.total == 3500.0

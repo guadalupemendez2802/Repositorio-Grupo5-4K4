@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import landingPage from './componentes/landingPage'
+import LandingPage from './componentes/LandingPage'
 import TicketsForm from './componentes/ticketsForm'
 import './App.css'
 
@@ -9,8 +9,7 @@ function App() {
   return (
     <div className="containerBox">
       {pagina === 'inicio' ? (
-        <div className="tempDiv"></div>
-        // <LandingPage onComprar={() => setPagina('formulario')} />
+        <LandingPage onComprar={() => setPagina('formulario')} />
       ) : (
         <TicketsForm onVolver={() => setPagina('inicio')} />
       )}

@@ -1,16 +1,34 @@
 import { useState } from 'react'
 
-const entradaVacia = () => ({ edad: '', tipoPase: 'regular' })
+const entradaVacia = () => ({ edad: '' })
+
+const tipoPasePorId = {
+  regular: 1,
+  vip: 2,
+}
+
+function formatearFecha(fechaIso) {
+  if (!fechaIso) {
+    return ''
+  }
+
+  const [anio, mes, dia] = fechaIso.split('-')
+  return `${dia}/${mes}/${anio}`
+}
 
 function TicketsForm({ onVolver }) {
+  const [emailUsuario, setEmailUsuario] = useState('')
   const [fecha, setFecha] = useState('')
   const [cantidad, setCantidad] = useState(1)
   const [entradas, setEntradas] = useState([entradaVacia()])
   const [formaPago, setFormaPago] = useState('')
+  const [tipoPase, setTipoPase] = useState('regular')
+  const [estadoEnvio, setEstadoEnvio] = useState('')
+  const [enviando, setEnviando] = useState(false)
 
   function handleCantidadChange(valor) {
-    const nuevaCantidad = valor//Math.min(10, Math.max(1, valor))
-    setCantidad(nuevaCantidad) 
+    const nuevaCantidad = Math.min(10, Math.max(1, valor))
+    setCantidad(nuevaCantidad)
     setEntradas((prev) => {
       if (nuevaCantidad > prev.length) {
         const extras = Array.from({ length: nuevaCantidad - prev.length }, entradaVacia)
@@ -20,17 +38,49 @@ function TicketsForm({ onVolver }) {
     })
   }
 
-  function handleEntradaChange(indice, campo, valor) {
-    setEntradas((prev) =>
-      prev.map((entrada, i) =>
-        i === indice ? { ...entrada, [campo]: valor } : entrada,
-      ),
-    )
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    const payload = {
+      email_usuario: emailUsuario,
+      fecha_visita: formatearFecha(fecha),
+      cantidad_entradas: cantidad,
+      edades: entradas.map((entrada) => Number(entrada.edad)),
+      metodo_pago: formaPago,
+      id_tipo_pase: tipoPasePorId[tipoPase],
+    }
+
+    try {
+      setEnviando(true)
+      setEstadoEnvio('')
+
+      const response = await fetch('/api/v1/entradas/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      if (!response.ok) {
+        const errorText = await response.text()
+        throw new Error(errorText || 'No se pudo completar la compra')
+      }
+
+      setEstadoEnvio('Compra enviada correctamente.')
+    } catch (error) {
+      setEstadoEnvio(error instanceof Error ? error.message : 'Error inesperado al enviar la compra')
+    } finally {
+      setEnviando(false)
+    }
   }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    console.log({ fecha, cantidad, entradas, formaPago })
+  function handleEntradaChange(indice, valor) {
+    setEntradas((prev) =>
+      prev.map((entrada, i) =>
+        i === indice ? { ...entrada, edad: valor } : entrada,
+      ),
+    )
   }
 
   return (
@@ -38,6 +88,16 @@ function TicketsForm({ onVolver }) {
       <h1>Formulario de compra</h1>
 
       <form className="ticket-form" onSubmit={handleSubmit}>
+        <label>
+          Email del usuario
+          <input
+            type="email"
+            value={emailUsuario}
+            onChange={(e) => setEmailUsuario(e.target.value)}
+            required
+          />
+        </label>
+
         <label>
           Fecha de visita
           <input
@@ -53,11 +113,19 @@ function TicketsForm({ onVolver }) {
           <input
             type="number"
             min={1}
-            max={1000}
+            max={10}
             value={cantidad}
             onChange={(e) => handleCantidadChange(Number(e.target.value))}
             required
           />
+        </label>
+
+        <label>
+          Tipo de pase
+          <select value={tipoPase} onChange={(e) => setTipoPase(e.target.value)} required>
+            <option value="regular">Regular</option>
+            <option value="vip">VIP</option>
+          </select>
         </label>
 
         <fieldset className="entradas-grupo">
@@ -70,21 +138,10 @@ function TicketsForm({ onVolver }) {
                 <input
                   type="number"
                   min={0}
-                  //max={120}
                   value={entrada.edad}
-                  onChange={(e) => handleEntradaChange(indice, 'edad', e.target.value)}
+                  onChange={(e) => handleEntradaChange(indice, e.target.value)}
                   required
                 />
-              </label>
-              <label>
-                Tipo de pase
-                <select
-                  value={entrada.tipoPase}
-                  onChange={(e) => handleEntradaChange(indice, 'tipoPase', e.target.value)}
-                >
-                  <option value="regular">Regular</option>
-                  <option value="vip">VIP</option>
-                </select>
               </label>
             </div>
           ))}
@@ -104,14 +161,16 @@ function TicketsForm({ onVolver }) {
         </label>
 
         <div className="form-actions">
-          <button type="submit" className="btn-primary">
-            Confirmar compra
+          <button type="submit" className="btn-primary" disabled={enviando}>
+            {enviando ? 'Enviando...' : 'Confirmar compra'}
           </button>
           <button type="button" className="btn-link" onClick={onVolver}>
             Volver al inicio
           </button>
         </div>
       </form>
+
+      {estadoEnvio ? <p>{estadoEnvio}</p> : null}
     </section>
   )
 }

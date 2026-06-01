@@ -45,6 +45,15 @@ def validar_fecha(fecha):
             "La fecha debe ser actual o futura"
         )
 
+    # Limitar a un año desde la fecha actual.
+    fecha_maxima = datetime.now().date().replace(
+        year=datetime.now().date().year + 1
+    )
+    if fecha_ingresada.date() > fecha_maxima:
+        raise ValueError(
+            "Solo puede solicitar entradas hasta 1 año en el futuro desde la fecha actual"
+        )
+
 
 def validar_disponibilidad(fecha_visita: str):
     if not fecha_visita:

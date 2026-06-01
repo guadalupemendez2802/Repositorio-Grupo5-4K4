@@ -142,3 +142,36 @@ def test_error_si_no_hay_fecha():
             metodo_pago="tarjeta",
             ids_tipo_pase=[1, 1],
         )
+
+def test_error_si_25_diciembre():
+    with pytest.raises(ValueError, match="No hay disponibilidad para la fecha seleccionada"):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha_visita="25/12/2026",
+            cantidad_entradas=2,
+            edades=[20,30],
+            metodo_pago="tarjeta",
+            ids_tipo_pase=[1, 1],
+        )
+
+def test_error_si_1_enero():
+    with pytest.raises(ValueError, match="No hay disponibilidad para la fecha seleccionada"):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha_visita="01/01/2027",
+            cantidad_entradas=2,
+            edades=[20,30],
+            metodo_pago="tarjeta",
+            ids_tipo_pase=[1, 1],
+        )
+
+def test_error_si_lunes():
+    with pytest.raises(ValueError, match="No hay disponibilidad para la fecha seleccionada"):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha_visita="01/6/2026",
+            cantidad_entradas=2,
+            edades=[20,30],
+            metodo_pago="tarjeta",
+            ids_tipo_pase=[1, 1],
+        )

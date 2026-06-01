@@ -175,3 +175,14 @@ def test_error_si_lunes():
             metodo_pago="tarjeta",
             ids_tipo_pase=[1, 1],
         )
+
+def test_error_si_fecha_posterior_1_year():
+    with pytest.raises(ValueError, match="Solo puede solicitar entradas hasta 1 año en el futuro desde la fecha actual"):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha_visita="30/12/2027",
+            cantidad_entradas=2,
+            edades=[20,30],
+            metodo_pago="tarjeta",
+            ids_tipo_pase=[1, 1],
+        )

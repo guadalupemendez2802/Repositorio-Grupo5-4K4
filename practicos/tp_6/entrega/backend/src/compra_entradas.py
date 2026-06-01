@@ -53,18 +53,18 @@ def validar_disponibilidad(fecha_visita: str):
         )
 
     if isinstance(fecha_visita, str):
-        fecha_visita = datetime.strptime(
-            fecha_visita,
-            "%d/%m/%Y"
-        )
+        fecha_visita = datetime.strptime(fecha_visita,"%d/%m/%Y")
 
-    # si la fecha es sábado (5) o domingo (6) no hay disponibilidad
-    # funciona tanto para datetime.datetime como datetime.date
-    #TODO CORREGIR ESTO CUANDO SEPAMOS CUALES SON LAS FECHAS DONDE ESTÁ CERRADO
-    if fecha_visita.weekday() in (5, 6):
+    # lunes (0) y feriados 25 diciembre y 1ro enero no tienen disponibilidad
+    if fecha_visita.weekday() == 0 or (
+        fecha_visita.month == 12 and fecha_visita.day == 25
+    ) or (
+        fecha_visita.month == 1 and fecha_visita.day == 1
+    ):
         raise ValueError(
             "No hay disponibilidad para la fecha seleccionada"
         )
+
 
 
 def validar_metodo_pago(metodo_pago):

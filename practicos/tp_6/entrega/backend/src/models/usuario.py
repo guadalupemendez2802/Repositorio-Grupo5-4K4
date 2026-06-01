@@ -5,6 +5,6 @@ class Usuario:
         nombre: str,
         email: str
     ):
-        self.id = id
-        self.nombre = nombre
-        self.email = email
+        self.id: int = id
+        self.nombre: str = nombre
+        self.email: str = email

@@ -5,7 +5,7 @@ class TipoPase:
         descripcion: str, 
         precio: float
     ):    
-        self.id = id
-        self.nombre = nombre
-        self.descripcion = descripcion
-        self.precio = precio
+        self.id: int = id
+        self.nombre: str = nombre
+        self.descripcion: str = descripcion
+        self.precio: float = precio

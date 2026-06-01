@@ -1,23 +1,22 @@
 from datetime import datetime
 
 def comprar_entradas(
-    usuario_registrado,
-    fecha,
-    entradas,
-    edades,
-    metodo_pago,
-    parque_abierto
+    usuario_registrado: bool,
+    fecha_visita: str,
+    cantidad_entradas: int,
+    edades: list[int],
+    metodo_pago: str,
 ):
     validar_usuario(usuario_registrado)
-    validar_fecha(fecha)
-    validar_disponibilidad(parque_abierto)
+    validar_fecha(fecha_visita)
+    validar_disponibilidad(fecha_visita)
     validar_metodo_pago(metodo_pago)
-    validar_cantidad_entradas(entradas)
-    validar_edades(entradas, edades)
+    validar_cantidad_entradas(cantidad_entradas)
+    validar_edades(cantidad_entradas, edades)
 
     return generar_respuesta_exitosa(
-        fecha=fecha,
-        cantidad=entradas,
+        fecha=fecha_visita,
+        cantidad=cantidad_entradas,
         metodo_pago=metodo_pago
     )
 
@@ -30,6 +29,10 @@ def validar_usuario(usuario_registrado):
 
 
 def validar_fecha(fecha):
+    if not fecha:
+        raise ValueError(
+            "Debe ingresar una fecha de visita"
+        )
     fecha_ingresada = datetime.strptime(
         fecha,
         "%d/%m/%Y"
@@ -41,8 +44,22 @@ def validar_fecha(fecha):
         )
 
 
-def validar_disponibilidad(parque_abierto):
-    if not parque_abierto:
+def validar_disponibilidad(fecha_visita: str):
+    if not fecha_visita:
+        raise ValueError(
+            "Debe ingresar una fecha de visita"
+        )
+
+    if isinstance(fecha_visita, str):
+        fecha_visita = datetime.strptime(
+            fecha_visita,
+            "%d/%m/%Y"
+        )
+
+    # si la fecha es sábado (5) o domingo (6) no hay disponibilidad
+    # funciona tanto para datetime.datetime como datetime.date
+    #TODO CORREGIR ESTO CUANDO SEPAMOS CUALES SON LAS FECHAS DONDE ESTÁ CERRADO
+    if fecha_visita.weekday() in (5, 6):
         raise ValueError(
             "No hay disponibilidad para la fecha seleccionada"
         )

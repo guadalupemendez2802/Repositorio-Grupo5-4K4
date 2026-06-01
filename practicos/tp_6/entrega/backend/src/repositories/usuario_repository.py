@@ -2,6 +2,8 @@ from src.database.db import obtener_conexion
 from src.models.usuario import Usuario
 
 class UsuarioRepository:
+    def __init__(self):
+        pass
     @staticmethod
     def obtener_por_id(usuario_id):
         con = obtener_conexion()
@@ -9,12 +11,12 @@ class UsuarioRepository:
         cursor = con.cursor()
 
         cursor.execute("""
-        SELECT *
-        FROM Usuario
-        WHERE id = ?
-        """, 
-        (usuario_id),
-        )
+                        SELECT *
+                        FROM Usuario
+                        WHERE id = ?
+                        """,
+                        usuario_id,
+                        )
         
         fila = cursor.fetchone()
 
@@ -28,14 +30,41 @@ class UsuarioRepository:
             nombre=fila["nombre"],
             email=fila["email"]
         )
-    
+
+    @staticmethod
+    def obtener_por_email(email):
+        con = obtener_conexion()
+
+        cursor = con.cursor()
+
+        cursor.execute("""
+                       SELECT *
+                       FROM Usuario
+                       WHERE email = ?
+                       """,
+                       (email,)
+                       )
+
+        fila = cursor.fetchone()
+
+        con.close()
+
+        if fila is None:
+            return None
+
+        return Usuario(
+            id=fila["id"],
+            nombre=fila["nombre"],
+            email=fila["email"]
+        )
+
     @staticmethod
     def guardar(usuario):
         con = obtener_conexion()
         cursor = con.cursor()
         cursor.execute(
             """
-            INSERT INTO usuarios
+            INSERT INTO Usuario
             (
                 nombre,
                 email
@@ -44,7 +73,7 @@ class UsuarioRepository:
             """,
             (
                 usuario.nombre,
-                usuario.email
+                usuario.email,
             )
         )
 

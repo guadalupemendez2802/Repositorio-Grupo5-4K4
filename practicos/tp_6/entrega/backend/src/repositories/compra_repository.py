@@ -5,8 +5,7 @@ class CompraRepository:
     def guardar(compra):
         con = obtener_conexion()
         cursor = con.cursor()
-        cursor.execute(
-            """
+        cursor.execute("""
             INSERT INTO Compra
             (
                 usuario_id,
@@ -17,13 +16,14 @@ class CompraRepository:
             )
             VALUES(?, ?, ?, ?, ?)
             """,
-            (compra.usuario_id, 
+            (compra.usuario_id,
             compra.fecha_compra,
-            compra.fecha_visita, 
-            compra.forma_pago, 
+            compra.fecha_visita,
+            compra.forma_pago,
             compra.total)
         )
         con.commit()
         compra_id = cursor.lastrowid
+        compra.id = compra_id
         con.close()
         return compra_id

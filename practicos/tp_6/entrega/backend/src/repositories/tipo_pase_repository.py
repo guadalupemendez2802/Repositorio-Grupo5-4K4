@@ -3,7 +3,7 @@ from src.models.tipo_pase import TipoPase
 
 class TipoPaseRepository:
     @staticmethod
-    def obtener_por_id(tipo_pase_id):
+    def obtener_por_id(tipo_pase_id: int) -> TipoPase | None:
         con = obtener_conexion()
         cursor = con.cursor()
 
@@ -18,6 +18,7 @@ class TipoPaseRepository:
     
         fila = cursor.fetchone()
         con.close()
+
         if fila is None:
             return None
         return TipoPase(
@@ -34,7 +35,7 @@ class TipoPaseRepository:
 
         cursor.execute(
             """
-            SELECT ¨
+            SELECT *
             FROM TipoPase
             """
         )

@@ -8,9 +8,9 @@ class Entrada:
         nombre_visitante: str,   
         edad_visitante: int,
     ):
-        self.id = id
-        self.compra_id = compra_id
-        self.tipo_pase_id = tipo_pase_id
-        self.nombre_visitante = nombre_visitante
-        self.edad_visitante = edad_visitante
+        self.id:int = id
+        self.compra_id: int = compra_id
+        self.tipo_pase_id: int = tipo_pase_id
+        self.nombre_visitante: str = nombre_visitante
+        self.edad_visitante: int = edad_visitante
     

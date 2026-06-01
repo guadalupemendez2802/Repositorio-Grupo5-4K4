@@ -7,3 +7,4 @@ class RegistrarCompraResponse(BaseModel):
     fecha_visita: date
     cantidad: int
     redirigir: str | None
+    total: float

@@ -25,5 +25,6 @@ def registrar_compra(req: RegistrarCompraRequest):
     return RegistrarCompraResponse(estado=compra["estado"],
                                    fecha_visita=fecha,
                                    cantidad=compra["cantidad"],
-                                   redirigir=compra["redirigir_a"] if "redirigir_a" in compra else None
+                                   redirigir=compra["redirigir_a"] if "redirigir_a" in compra else None,
+                                   total = compra["total"]
                                    )

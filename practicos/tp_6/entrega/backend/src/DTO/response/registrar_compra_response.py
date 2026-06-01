@@ -8,3 +8,4 @@ class RegistrarCompraResponse(BaseModel):
     cantidad: int
     redirigir: str | None
     total: float
+    id_compra: int

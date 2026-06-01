@@ -80,6 +80,7 @@ def comprar_entrada(
         )
         # obtengo y actualizo el id de la compra guardada en BD
         compra_actual.id = CompraRepository().guardar(compra_actual)
+        resultado["id_compra"] = compra_actual.id
 
         # ahora debo actualizar en la bdd las entradas para esa fecha
         for i in range(cantidad_entradas):

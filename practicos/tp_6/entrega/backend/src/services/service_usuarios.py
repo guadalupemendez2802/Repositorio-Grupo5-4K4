@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from repositories.usuario_repository import UsuarioRepository
 
 from typing import TYPE_CHECKING

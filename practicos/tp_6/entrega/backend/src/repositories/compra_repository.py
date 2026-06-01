@@ -2,6 +2,22 @@ from src.database.db import obtener_conexion
 
 class CompraRepository:
     @staticmethod
+    def obtener_por_id(id_compra: int):
+        con = obtener_conexion()
+        cursor = con.cursor()
+        cursor.execute("SELECT * FROM Compra WHERE id = ?", (id_compra,))
+        fila = cursor.fetchone()
+        con.close()
+        if fila is None:
+            return None
+        return {
+            "id": fila["id"],
+            "fecha_visita": fila["fecha_visita"],
+            "forma_pago": fila["forma_pago"],
+            "total": fila["total"],
+        }
+
+    @staticmethod
     def guardar(compra):
         con = obtener_conexion()
         cursor = con.cursor()

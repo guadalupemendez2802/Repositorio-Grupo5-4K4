@@ -7,5 +7,8 @@ class RegistrarCompraRequest(BaseModel):
     cantidad_entradas: int = Field(..., description="Cantidad de entradas a comprar")
     edades: list[int] = Field(..., description="Lista con las edades de los visitantes "
                                                "correspondientes a cada entrada comprada")
+    ids_tipo_pase: list[int] = Field(
+        ...,
+        description="Lista con el id del tipo de pase (vip o regular) de cada entrada",
+    )
     metodo_pago: str = Field(..., description="string aclarando el método de pago utilizado")
-    id_tipo_pase: int = Field(..., description="id del tipo de pase seleccionado para la compra (vip o regular)")

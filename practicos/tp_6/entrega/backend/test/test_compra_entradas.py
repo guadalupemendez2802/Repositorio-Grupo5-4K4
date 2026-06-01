@@ -20,6 +20,7 @@ def test_compra_exitosa_con_tarjeta():
         cantidad_entradas=10,
         edades=[17,22,55,33,75,67,69,21,16,17],
         metodo_pago="tarjeta",
+        ids_tipo_pase=[1] * 10,
     )
 
     assert resultado["estado"] == "ok"
@@ -35,6 +36,7 @@ def test_error_si_no_indica_medio_de_pago():
             cantidad_entradas=10,
             edades=[17,22,55,33,75,67,69,21,16,17],
             metodo_pago=None,
+            ids_tipo_pase=[1] * 10,
         )
 
 #TEST 3
@@ -49,6 +51,7 @@ def test_error_si_compra_mas_de_diez_entradas():
             cantidad_entradas=11,
             edades=[20] * 11,
             metodo_pago="tarjeta",
+            ids_tipo_pase=[1] * 11,
         )
 
 #TEST 4
@@ -63,6 +66,7 @@ def test_error_si_usuario_no_registrado():
             cantidad_entradas=2,
             edades=[20, 30],
             metodo_pago="tarjeta",
+            ids_tipo_pase=[1, 1],
         )
 
 #TEST 5
@@ -77,6 +81,7 @@ def test_error_si_parque_cerrado():
             cantidad_entradas=2,
             edades=[20,30],
             metodo_pago="tarjeta",
+            ids_tipo_pase=[1, 1],
         )
 
 #TEST 6
@@ -91,6 +96,7 @@ def test_error_si_fecha_pasada():
             cantidad_entradas=2,
             edades=[20,30],
             metodo_pago="tarjeta",
+            ids_tipo_pase=[1, 1],
         )
 
 #TEST 7
@@ -104,6 +110,21 @@ def test_error_si_faltan_edades():
             fecha_visita="03/06/2026",
             cantidad_entradas=3,
             edades=[20,30],
+            metodo_pago="tarjeta",
+            ids_tipo_pase=[1, 1],
+        )
+
+def test_error_si_faltan_tipos_pase():
+    with pytest.raises(
+        ValueError,
+        match="Debe indicar el tipo de pase de cada visitante",
+    ):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha_visita="03/06/2026",
+            cantidad_entradas=3,
+            edades=[20, 30, 40],
+            ids_tipo_pase=[1, 2],
             metodo_pago="tarjeta",
         )
 
@@ -119,4 +140,5 @@ def test_error_si_no_hay_fecha():
             cantidad_entradas=2,
             edades=[20,30],
             metodo_pago="tarjeta",
+            ids_tipo_pase=[1, 1],
         )

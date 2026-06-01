@@ -1,0 +1,44 @@
+/**
+ * Estándar visual — Parque (TP6)
+ * Fuente: Lato
+ * Paleta: verde oscuro, verde medio, verde claro, crema, rojo
+ */
+:root {
+  /* Paleta base (no usar directo en componentes; preferir tokens semánticos) */
+  --color-verde-oscuro: #386641;
+  --color-verde-medio: #6a994e;
+  --color-verde-claro: #a7c957;
+  --color-crema: #f2e8cf;
+  --color-rojo: #bc4749;
+
+  /* Tipografía */
+  --font-family: 'Lato', system-ui, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  /* Semánticos */
+  --text: #4a5c4e;
+  --text-h: var(--color-verde-oscuro);
+  --bg: var(--color-crema);
+  --surface: #fffef9;
+  --border: rgba(56, 102, 65, 0.28);
+  --code-bg: rgba(167, 201, 87, 0.22);
+
+  --accent: var(--color-verde-medio);
+  --accent-hover: var(--color-verde-oscuro);
+  --accent-bg: rgba(106, 153, 78, 0.18);
+  --accent-border: rgba(56, 102, 65, 0.45);
+
+  --color-dia-abierto: var(--color-verde-claro);
+  --color-dia-abierto-hover: var(--color-verde-medio);
+  --color-error: var(--color-rojo);
+  --color-texto-inverso: #fffef9;
+
+  --social-bg: rgba(242, 232, 207, 0.85);
+  --shadow:
+    rgba(56, 102, 65, 0.12) 0 10px 15px -3px,
+    rgba(56, 102, 65, 0.08) 0 4px 6px -2px;
+
+  --sans: var(--font-family);
+  --heading: var(--font-family);
+  --mono: var(--font-mono);
+}

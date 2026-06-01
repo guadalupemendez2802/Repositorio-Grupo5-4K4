@@ -11,12 +11,14 @@ router = APIRouter(prefix="/api/v1/entradas", tags=["Entradas"])
 
 @router.post("/", response_model=RegistrarCompraResponse)
 def registrar_compra(req: RegistrarCompraRequest):
-    compra = comprar_entrada(req.email_usuario,
-                             req.fecha_visita,
-                             req.cantidad_entradas,
-                             req.edades,
-                             req.metodo_pago,
-                             req.id_tipo_pase)
+    compra = comprar_entrada(
+        req.email_usuario,
+        req.fecha_visita,
+        req.cantidad_entradas,
+        req.edades,
+        req.metodo_pago,
+        req.ids_tipo_pase,
+    )
 
     fecha = datetime.strptime(compra["fecha_visita"], "%d/%m/%Y").date()
 

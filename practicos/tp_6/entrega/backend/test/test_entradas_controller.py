@@ -23,7 +23,7 @@ def test_registrar_compra_ok_sin_redireccion(monkeypatch):
         cantidad_entradas=2,
         edades=[20, 30],
         metodo_pago="efectivo",
-        id_tipo_pase=1,
+        ids_tipo_pase=[1, 1],
     )
 
     response = registrar_compra(req)
@@ -56,7 +56,7 @@ def test_registrar_compra_ok_con_redireccion(monkeypatch):
         cantidad_entradas=2,
         edades=[20, 30],
         metodo_pago="tarjeta",
-        id_tipo_pase=1,
+        ids_tipo_pase=[1, 1],
     )
 
     response = registrar_compra(req)

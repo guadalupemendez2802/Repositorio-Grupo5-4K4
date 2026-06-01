@@ -1,6 +1,14 @@
 import { useState } from 'react'
+import CalendarioVisita from './CalendarioVisita'
+import { puedeElegirFecha, parseIso, motivoFechaInvalida } from '../utils/calendarioParque'
+import {
+  calcularPrecioEntrada,
+  calcularTotalEntradas,
+  descripcionTarifa,
+  formatearPrecio,
+} from '../utils/preciosEntrada'
 
-const entradaVacia = () => ({ edad: '' })
+const entradaVacia = () => ({ edad: '', tipoPase: 'regular' })
 
 const tipoPasePorId = {
   regular: 1,
@@ -22,7 +30,6 @@ function TicketsForm({ onVolver }) {
   const [cantidad, setCantidad] = useState(1)
   const [entradas, setEntradas] = useState([entradaVacia()])
   const [formaPago, setFormaPago] = useState('')
-  const [tipoPase, setTipoPase] = useState('regular')
   const [estadoEnvio, setEstadoEnvio] = useState('')
   const [enviando, setEnviando] = useState(false)
 
@@ -41,13 +48,21 @@ function TicketsForm({ onVolver }) {
   async function handleSubmit(e) {
     e.preventDefault()
 
+    if (fecha) {
+      const { anio, mes, dia } = parseIso(fecha)
+      if (!puedeElegirFecha(anio, mes, dia)) {
+        setEstadoEnvio(motivoFechaInvalida(fecha) || 'La fecha elegida no es valida.')
+        return
+      }
+    }
+
     const payload = {
       email_usuario: emailUsuario,
       fecha_visita: formatearFecha(fecha),
       cantidad_entradas: cantidad,
       edades: entradas.map((entrada) => Number(entrada.edad)),
+      ids_tipo_pase: entradas.map((entrada) => tipoPasePorId[entrada.tipoPase]),
       metodo_pago: formaPago,
-      id_tipo_pase: tipoPasePorId[tipoPase],
     }
 
     try {
@@ -75,13 +90,15 @@ function TicketsForm({ onVolver }) {
     }
   }
 
-  function handleEntradaChange(indice, valor) {
+  function handleEntradaChange(indice, campo, valor) {
     setEntradas((prev) =>
       prev.map((entrada, i) =>
-        i === indice ? { ...entrada, edad: valor } : entrada,
+        i === indice ? { ...entrada, [campo]: valor } : entrada,
       ),
     )
   }
+
+  const totalCompra = calcularTotalEntradas(entradas)
 
   return (
     <section id="center" className="form-page">
@@ -100,12 +117,7 @@ function TicketsForm({ onVolver }) {
 
         <label>
           Fecha de visita
-          <input
-            type="date"
-            value={fecha}
-            onChange={(e) => setFecha(e.target.value)}
-            required
-          />
+          <CalendarioVisita value={fecha} onChange={setFecha} required />
         </label>
 
         <label>
@@ -120,31 +132,45 @@ function TicketsForm({ onVolver }) {
           />
         </label>
 
-        <label>
-          Tipo de pase
-          <select value={tipoPase} onChange={(e) => setTipoPase(e.target.value)} required>
-            <option value="regular">Regular</option>
-            <option value="vip">VIP</option>
-          </select>
-        </label>
-
         <fieldset className="entradas-grupo">
           <legend>Datos de cada visitante</legend>
-          {entradas.map((entrada, indice) => (
-            <div key={indice} className="entrada-item">
-              <h2>Entrada {indice + 1}</h2>
-              <label>
-                Edad
-                <input
-                  type="number"
-                  min={0}
-                  value={entrada.edad}
-                  onChange={(e) => handleEntradaChange(indice, e.target.value)}
-                  required
-                />
-              </label>
-            </div>
-          ))}
+          {entradas.map((entrada, indice) => {
+            const precioEntrada = calcularPrecioEntrada(entrada.tipoPase, entrada.edad)
+            const tarifa = descripcionTarifa(entrada.edad)
+
+            return (
+              <div key={indice} className="entrada-item">
+                <h2>Entrada {indice + 1}</h2>
+                <label>
+                  Edad
+                  <input
+                    type="number"
+                    min={0}
+                    value={entrada.edad}
+                    onChange={(e) => handleEntradaChange(indice, 'edad', e.target.value)}
+                    required
+                  />
+                </label>
+                <label>
+                  Tipo de pase
+                  <select
+                    value={entrada.tipoPase}
+                    onChange={(e) => handleEntradaChange(indice, 'tipoPase', e.target.value)}
+                    required
+                  >
+                    <option value="regular">Regular ($10.000)</option>
+                    <option value="vip">VIP ($20.000)</option>
+                  </select>
+                </label>
+                {precioEntrada !== null ? (
+                  <p className="entrada-precio">
+                    <span className="entrada-precio-valor">{formatearPrecio(precioEntrada)}</span>
+                    <span className="entrada-precio-detalle">{tarifa}</span>
+                  </p>
+                ) : null}
+              </div>
+            )
+          })}
         </fieldset>
 
         <label>
@@ -160,6 +186,11 @@ function TicketsForm({ onVolver }) {
           </select>
         </label>
 
+        <div className="compra-total" aria-live="polite">
+          <span className="compra-total-etiqueta">Total a pagar</span>
+          <strong className="compra-total-monto">{formatearPrecio(totalCompra)}</strong>
+        </div>
+
         <div className="form-actions">
           <button type="submit" className="btn-primary" disabled={enviando}>
             {enviando ? 'Enviando...' : 'Confirmar compra'}
@@ -170,7 +201,17 @@ function TicketsForm({ onVolver }) {
         </div>
       </form>
 
-      {estadoEnvio ? <p>{estadoEnvio}</p> : null}
+      {estadoEnvio ? (
+        <p
+          className={`form-mensaje ${
+            estadoEnvio.includes('correctamente')
+              ? 'form-mensaje--exito'
+              : 'form-mensaje--error'
+          }`}
+        >
+          {estadoEnvio}
+        </p>
+      ) : null}
     </section>
   )
 }

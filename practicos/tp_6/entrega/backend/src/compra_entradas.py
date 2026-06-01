@@ -5,6 +5,7 @@ def comprar_entradas(
     fecha_visita: str,
     cantidad_entradas: int,
     edades: list[int],
+    ids_tipo_pase: list[int],
     metodo_pago: str,
 ):
     validar_usuario(usuario_registrado)
@@ -13,6 +14,7 @@ def comprar_entradas(
     validar_metodo_pago(metodo_pago)
     validar_cantidad_entradas(cantidad_entradas)
     validar_edades(cantidad_entradas, edades)
+    validar_tipos_pase(cantidad_entradas, ids_tipo_pase)
 
     return generar_respuesta_exitosa(
         fecha=fecha_visita,
@@ -83,6 +85,13 @@ def validar_edades(entradas, edades):
     if len(edades) != entradas:
         raise ValueError(
             "Debe indicar la edad de cada visitante"
+        )
+
+
+def validar_tipos_pase(entradas, ids_tipo_pase):
+    if len(ids_tipo_pase) != entradas:
+        raise ValueError(
+            "Debe indicar el tipo de pase de cada visitante"
         )
 
 

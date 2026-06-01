@@ -57,7 +57,7 @@ def test_comprar_entrada_ok_guarda_compra(monkeypatch):
         cantidad_entradas=2,
         edades=[20, 30],
         metodo_pago="tarjeta",
-        id_tipo_pase=1,
+        ids_tipo_pase=[1, 1],
     )
 
     assert resultado["estado"] == "ok"
@@ -113,7 +113,7 @@ def test_comprar_entrada_error_no_guarda(monkeypatch):
         cantidad_entradas=2,
         edades=[20, 30],
         metodo_pago="tarjeta",
-        id_tipo_pase=1,
+        ids_tipo_pase=[1, 1],
     )
 
     assert resultado["estado"] == "error"

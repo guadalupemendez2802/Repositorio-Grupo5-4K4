@@ -119,3 +119,42 @@ def test_comprar_entrada_error_no_guarda(monkeypatch):
     assert resultado["estado"] == "error"
     assert guardadas == []
 
+
+def test_calculo_total_con_descuentos_por_edad(monkeypatch):
+    def fake_comprobar_usuario(email):
+        return True, DummyUser(9)
+
+    def fake_obtener_por_id(self, tipo_pase_id):
+        assert tipo_pase_id == 1
+        return DummyTipoPase(10000.0)
+
+    def fake_comprar_entradas(**kwargs):
+        return {
+            "estado": "ok",
+            "fecha_visita": kwargs["fecha_visita"],
+            "cantidad": kwargs["cantidad_entradas"],
+        }
+
+    monkeypatch.setattr(
+        "src.services.comprar_entrada_service.comprobar_usuario",
+        fake_comprobar_usuario,
+    )
+    monkeypatch.setattr(
+        "src.services.comprar_entrada_service.TipoPaseRepository.obtener_por_id",
+        fake_obtener_por_id,
+    )
+    monkeypatch.setattr(
+        "src.services.comprar_entrada_service.comprar_entradas",
+        fake_comprar_entradas,
+    )
+
+    resultado = comprar_entrada_service.comprar_entrada(
+        email_usuario="user@test.com",
+        fecha_visita="03/06/2026",
+        cantidad_entradas=3,
+        edades=[3, 12, 25],
+        metodo_pago="tarjeta",
+        ids_tipo_pase=[1, 1, 1],
+    )
+
+    assert resultado["total"] == 15000.0

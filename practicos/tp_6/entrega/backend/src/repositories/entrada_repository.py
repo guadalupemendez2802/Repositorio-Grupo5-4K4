@@ -37,19 +37,21 @@ class EntradaRepository:
         con = obtener_conexion()
         cursor = con.cursor()
 
-        # SQLite3 guarda campos DATE como texto en formato AAAA-MM-DD.
-        # Si viene como tipo date de python lo paso a ese formato.
         if isinstance(fecha_visita, date):
-            fecha_visita = fecha_visita.isoformat()
+            fecha_visita = fecha_visita.strftime("%d/%m/%Y")
         else:
-            # Permite recibir fechas en formato "dd/mm/AAAA"
-            fecha_visita = datetime.strptime(fecha_visita, "%d/%m/%Y").date().isoformat()
+            # Si viene "12/12/26", lo pasa a "12/12/2026"
+            try:
+                fecha_visita = datetime.strptime(fecha_visita, "%d/%m/%y").strftime("%d/%m/%Y")
+            except ValueError:
+                # Si ya viene "12/12/2026", lo deja normalizado igual
+                fecha_visita = datetime.strptime(fecha_visita, "%d/%m/%Y").strftime("%d/%m/%Y")
 
         cursor.execute(
             """
             SELECT COUNT(e.id)
             FROM Entrada e
-                     INNER JOIN Compra c ON e.compra_id = c.id
+            INNER JOIN Compra c ON e.compra_id = c.id
             WHERE c.fecha_visita = ?
             """,
             (fecha_visita,)

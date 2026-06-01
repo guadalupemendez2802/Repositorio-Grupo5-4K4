@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, status
 from services.comprar_entrada_service import comprar_entrada
 
 from DTO.request.registrar_compra_request import RegistrarCompraRequest
@@ -11,14 +11,20 @@ router = APIRouter(prefix="/api/v1/entradas", tags=["Entradas"])
 
 @router.post("/", response_model=RegistrarCompraResponse)
 def registrar_compra(req: RegistrarCompraRequest):
-    compra = comprar_entrada(
-        req.email_usuario,
-        req.fecha_visita,
-        req.cantidad_entradas,
-        req.edades,
-        req.metodo_pago,
-        req.ids_tipo_pase,
-    )
+    try:
+        compra = comprar_entrada(
+            req.email_usuario,
+            req.fecha_visita,
+            req.cantidad_entradas,
+            req.edades,
+            req.metodo_pago,
+            req.ids_tipo_pase,
+        )
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e),
+        )
 
     fecha = datetime.strptime(compra["fecha_visita"], "%d/%m/%Y").date()
 

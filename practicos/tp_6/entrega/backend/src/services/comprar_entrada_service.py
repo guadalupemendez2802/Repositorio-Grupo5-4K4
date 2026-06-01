@@ -2,7 +2,9 @@ from datetime import datetime
 
 from compra_entradas import comprar_entradas
 from models.compra import Compra
+from models.entrada import Entrada
 from repositories.compra_repository import CompraRepository
+from repositories.entrada_repository import EntradaRepository
 from repositories.tipo_pase_repository import TipoPaseRepository
 from services.service_usuarios import comprobar_usuario
 
@@ -15,6 +17,17 @@ def comprar_entrada(
     metodo_pago: str,
     ids_tipo_pase: list[int],
 ):
+
+    entrada_repo: EntradaRepository = EntradaRepository()
+
+    cantidad_entradas_registradas = entrada_repo.obtener_cantidad_entradas(fecha_visita)
+
+    if cantidad_entradas_registradas + cantidad_entradas > 100:
+        entradas_restantes = 100 - cantidad_entradas_registradas
+        raise ValueError(f"No hay suficientes entradas disponibles para la fecha seleccionada."
+                         f" Solo quedan {entradas_restantes} entradas disponibles para el día {fecha_visita}.")
+
+
     usuario_registrado, user_data = comprobar_usuario(email_usuario)
 
     repo_tipos = TipoPaseRepository()
@@ -59,7 +72,21 @@ def comprar_entrada(
             metodo_pago,
             total,
         )
-        CompraRepository().guardar(compra_actual)
+        # obtengo y actualizo el id de la compra guardada en BD
+        compra_actual.id = CompraRepository().guardar(compra_actual)
+
+        # ahora debo actualizar en la bdd las entradas para esa fecha
+        for i in range(cantidad_entradas):
+            entrada_actual = Entrada(
+                None,
+                compra_actual.id,
+                ids_tipo_pase[i],
+                user_data.nombre,
+                edades[i]
+            )
+            entrada_repo.guardar(entrada_actual)
+
+
 
     # TODO MÁS O MENOS POR ACÁ SE DEBERÍA ENVIAR UN MAIL DE CONFIRMACIÓN AL USUARIO, TENÉMOS QUE HACER ESO?
     # O QUEDA FUERA DEL ALCANCE QUE ESTAMOS PROGRAMANDO?

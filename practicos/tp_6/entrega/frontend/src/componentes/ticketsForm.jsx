@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { QRCode } from 'react-qr-code'
 import CalendarioVisita from './CalendarioVisita'
 import { puedeElegirFecha, parseIso, motivoFechaInvalida } from '../utils/calendarioParque'
 import {
@@ -7,6 +8,59 @@ import {
   descripcionTarifa,
   formatearPrecio,
 } from '../utils/preciosEntrada'
+
+function ModalCompraExitosa({ compra, emailUsuario, entradas, onCerrar }) {
+  const fechaFormateada = compra.fecha_visita
+    ? compra.fecha_visita.split('-').reverse().join('/')
+    : ''
+  const urlQr = `http://localhost:8000/api/v1/compras/${compra.id_compra}`
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-contenido" role="dialog" aria-modal="true" aria-label="Confirmación de compra">
+        <h2>¡Compra realizada!</h2>
+        <p className="modal-mail-aviso">
+          Se envió un mail de confirmación a <strong>{emailUsuario}</strong>
+        </p>
+        <p className="modal-orden">Orden #{compra.id_compra}</p>
+        <ul className="modal-detalle">
+          <li>
+            <span>Fecha de visita</span>
+            <strong>{fechaFormateada}</strong>
+          </li>
+          <li>
+            <span>Entradas</span>
+            <strong>{compra.cantidad}</strong>
+          </li>
+          <li>
+            <span>Total</span>
+            <strong>{formatearPrecio(compra.total)}</strong>
+          </li>
+        </ul>
+        <div className="modal-visitantes">
+          <p className="modal-visitantes-titulo">Detalle de visitantes</p>
+          <ul className="modal-detalle">
+            {entradas.map((entrada, i) => (
+              <li key={i}>
+                <span>Visitante {i + 1} — Edad: {entrada.edad}</span>
+                <strong>{entrada.tipoPase === 'vip' ? 'VIP' : 'Regular'}</strong>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="modal-qr">
+          <QRCode value={urlQr} size={128} />
+        </div>
+        {compra.redirigir === 'mercado_pago' && (
+          <p className="modal-mp-aviso">Serás redirigido a Mercado Pago para completar el pago.</p>
+        )}
+        <button className="btn-primary" onClick={onCerrar}>
+          Cerrar
+        </button>
+      </div>
+    </div>
+  )
+}
 
 const entradaVacia = () => ({ edad: '', tipoPase: 'regular' })
 
@@ -32,6 +86,7 @@ function TicketsForm({ onVolver }) {
   const [formaPago, setFormaPago] = useState('')
   const [estadoEnvio, setEstadoEnvio] = useState('')
   const [enviando, setEnviando] = useState(false)
+  const [compraConfirmada, setCompraConfirmada] = useState(null)
 
   function handleCantidadChange(valor) {
     const nuevaCantidad = Math.min(10, Math.max(1, valor))
@@ -51,7 +106,7 @@ function TicketsForm({ onVolver }) {
     if (fecha) {
       const { anio, mes, dia } = parseIso(fecha)
       if (!puedeElegirFecha(anio, mes, dia)) {
-        setEstadoEnvio(motivoFechaInvalida(fecha) || 'La fecha elegida no es valida.')
+        setEstadoEnvio(motivoFechaInvalida(fecha) || 'La fecha elegida no es valida!')
         return
       }
     }
@@ -82,7 +137,8 @@ function TicketsForm({ onVolver }) {
         throw new Error(errorText || 'No se pudo completar la compra')
       }
 
-      setEstadoEnvio('Compra enviada correctamente.')
+      const data = await response.json()
+      setCompraConfirmada(data)
     } catch (error) {
       setEstadoEnvio(error instanceof Error ? error.message : 'Error inesperado al enviar la compra')
     } finally {
@@ -99,6 +155,17 @@ function TicketsForm({ onVolver }) {
   }
 
   const totalCompra = calcularTotalEntradas(entradas)
+
+  if (compraConfirmada) {
+    return (
+      <ModalCompraExitosa
+        compra={compraConfirmada}
+        emailUsuario={emailUsuario}
+        entradas={entradas}
+        onCerrar={onVolver}
+      />
+    )
+  }
 
   return (
     <section id="center" className="form-page">

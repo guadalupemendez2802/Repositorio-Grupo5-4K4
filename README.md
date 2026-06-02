@@ -156,6 +156,7 @@ git tag -a LB_1 -m "Línea base 1"
 |----------------|-------------|-----------------|
 | **LB_1**    | 14/04/2026  | Entrega de **TP4 - SCM**. Se estableció la estructura del repositorio del *Grupo N° 5*|
 | **LB_2**    | 26/05/2026  | Entrega de **TP7 - SCRUM**. Se realizó el parque de diversiones usando SCRUM |
+| **LB_3**    | 02/06/2026  | Entrega de **TP6 - TDD**. Se realizó el desarrollo de la US comprar entrada utilizando TDD|
 ---
 
 ## Herramienta a utilizar para SCM

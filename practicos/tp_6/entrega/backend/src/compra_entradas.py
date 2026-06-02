@@ -104,6 +104,10 @@ def validar_edades(entradas, edades):
             raise ValueError(
                 "La edad no puede ser negativa"
             )
+        elif edad > 99:
+            raise ValueError(
+                "La edad no puede superar los 99 años"
+            )
 
 
 def validar_tipos_pase(entradas, ids_tipo_pase):

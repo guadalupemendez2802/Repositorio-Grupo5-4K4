@@ -114,6 +114,20 @@ def test_error_si_faltan_edades():
             ids_tipo_pase=[1, 1],
         )
 
+def error_si_edad_negativa():
+    with pytest.raises(
+        ValueError,
+        match="La edad no puede ser negativa"
+    ):
+        comprar_entradas(
+            usuario_registrado=True,
+            fecha_visita="03/06/2026",
+            cantidad_entradas=2,
+            edades=[-1, 30],
+            metodo_pago="tarjeta",
+            ids_tipo_pase=[1, 1],
+        )
+
 def test_error_si_faltan_tipos_pase():
     with pytest.raises(
         ValueError,

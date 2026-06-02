@@ -95,6 +95,11 @@ def validar_edades(entradas, edades):
         raise ValueError(
             "Debe indicar la edad de cada visitante"
         )
+    for edad in edades:
+        if edad < 0:
+            raise ValueError(
+                "La edad no puede ser negativa"
+            )
 
 
 def validar_tipos_pase(entradas, ids_tipo_pase):

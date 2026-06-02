@@ -1,21 +1,21 @@
 /**
- * Estándar visual — Parque (TP6)
+ * EstÃ¡ndar visual del Parque (TP6)
  * Fuente: Lato
  * Paleta: verde oscuro, verde medio, verde claro, crema, rojo
  */
 :root {
-  /* Paleta base (no usar directo en componentes; preferir tokens semánticos) */
+  /* Paleta base (no usar directo en componentes; preferir tokens semï¿½nticos) */
   --color-verde-oscuro: #386641;
   --color-verde-medio: #6a994e;
   --color-verde-claro: #a7c957;
   --color-crema: #f2e8cf;
   --color-rojo: #bc4749;
 
-  /* Tipografía */
+  /* TipografÃ­aa */
   --font-family: 'Lato', system-ui, sans-serif;
   --font-mono: ui-monospace, Consolas, monospace;
 
-  /* Semánticos */
+  /* SemÃ¡nticos */
   --text: #4a5c4e;
   --text-h: var(--color-verde-oscuro);
   --bg: var(--color-crema);

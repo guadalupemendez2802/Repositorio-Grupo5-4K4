@@ -8,6 +8,7 @@ import {
   descripcionTarifa,
   formatearPrecio,
 } from '../utils/preciosEntrada'
+import { useNavigate } from "react-router-dom";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 
@@ -151,7 +152,7 @@ async function obtenerMensajeErrorDeRespuesta(response) {
   return obtenerMensajeError(texto, fallback)
 }
 
-function TicketsForm({ onVolver }) {
+function TicketsForm() {
   const [emailUsuario, setEmailUsuario] = useState('')
   const [fecha, setFecha] = useState('')
   const [cantidad, setCantidad] = useState(1)
@@ -160,6 +161,7 @@ function TicketsForm({ onVolver }) {
   const [errorCompra, setErrorCompra] = useState('')
   const [enviando, setEnviando] = useState(false)
   const [compraConfirmada, setCompraConfirmada] = useState(null)
+  const navigate = useNavigate()
 
   function handleCantidadChange(valor) {
     const nuevaCantidad = Math.min(10, Math.max(1, valor))
@@ -342,7 +344,7 @@ function TicketsForm({ onVolver }) {
           <button type="submit" className="btn-primary" disabled={enviando}>
             {enviando ? 'Enviando...' : 'Confirmar compra'}
           </button>
-          <button type="button" className="btn-link" onClick={onVolver}>
+          <button type="button" className="btn-link" onClick={() => {navigate("/")}}>
             Volver al inicio
           </button>
         </div>

@@ -1,7 +1,7 @@
 import heroImg from '../assets/hero.png'
 import { useNavigate } from "react-router-dom";
 
-function LandingPage({ onComprar }) {
+function LandingPage() {
   const navigate = useNavigate()
   return (
     <section id="center"> 

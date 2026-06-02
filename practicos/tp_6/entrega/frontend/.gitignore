@@ -25,3 +25,10 @@ dist-ssr
 
 # package.json-lock
 package-lock.json
+
+# Python virtual environments
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc

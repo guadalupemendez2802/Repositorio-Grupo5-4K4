@@ -1,6 +1,7 @@
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./componentes/LandingPage";
 import TicketsForm from "./componentes/ticketsForm";
+import QrView from "./componentes/qrView";
 
 // 1. Definimos las rutas usando la nueva API de objetos
 const router = createHashRouter([
@@ -14,7 +15,7 @@ const router = createHashRouter([
   },
   {
     path: "/qrView",
-    element: <div>Vista QR de tu APP</div>, // Reemplaza por tu componente
+    element: <QrView />,
   },
 ]);
 

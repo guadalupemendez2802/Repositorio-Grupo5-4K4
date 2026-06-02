@@ -80,6 +80,7 @@ def test_comprar_entrada_ok_guarda_compra(monkeypatch):
     )
 
     assert resultado["estado"] == "ok"
+    assert resultado["id_compra"] == 123
     assert len(guardadas) == 1
     compra = guardadas[0]
     assert compra.usuario_id == 7
@@ -158,6 +159,7 @@ def test_comprar_entrada_error_no_guarda(monkeypatch):
     )
 
     assert resultado["estado"] == "error"
+    assert "id_compra" not in resultado
     assert guardadas == []
     assert entradas_guardadas == []
 

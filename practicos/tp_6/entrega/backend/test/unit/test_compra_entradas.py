@@ -77,7 +77,7 @@ def test_error_si_parque_cerrado():
     ):
         comprar_entradas(
             usuario_registrado=True,
-            fecha_visita="07/06/2026",
+            fecha_visita="08/06/2026",
             cantidad_entradas=2,
             edades=[20,30],
             metodo_pago="tarjeta",
@@ -169,7 +169,7 @@ def test_error_si_lunes():
     with pytest.raises(ValueError, match="No hay disponibilidad para la fecha seleccionada"):
         comprar_entradas(
             usuario_registrado=True,
-            fecha_visita="01/6/2026",
+            fecha_visita="07/12/2026",
             cantidad_entradas=2,
             edades=[20,30],
             metodo_pago="tarjeta",

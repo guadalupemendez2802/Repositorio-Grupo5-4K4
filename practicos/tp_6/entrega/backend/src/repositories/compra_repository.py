@@ -1,3 +1,4 @@
+from models.compra import Compra
 from src.database.db import obtener_conexion
 
 class CompraRepository:
@@ -10,12 +11,7 @@ class CompraRepository:
         con.close()
         if fila is None:
             return None
-        return {
-            "id": fila["id"],
-            "fecha_visita": fila["fecha_visita"],
-            "forma_pago": fila["forma_pago"],
-            "total": fila["total"],
-        }
+        return Compra(**fila)
 
     @staticmethod
     def guardar(compra):

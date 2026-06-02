@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from controller.entradas_controller import router as comprar_router, router_compras
+from controller.entradas_controller import router as comprar_router
+from controller.compras_controller import router_compras
 
 
 app = FastAPI()

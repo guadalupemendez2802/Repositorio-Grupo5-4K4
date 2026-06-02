@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
-
 export default function QrView() {
   const [searchParams] = useSearchParams()
   const idCompra = searchParams.get('id')
@@ -20,7 +18,7 @@ export default function QrView() {
 
     async function obtenerDetalleEntradas() {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/v1/compras/${idCompra}/entradas`)
+        const response = await fetch(`/api/v1/entradas/detalle/${idCompra}`)
         if (!response.ok) {
           throw new Error('Error al obtener los detalles de la compra')
         }

@@ -11,12 +11,13 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+const FRONTEND_BASE_URL = 'http://192.168.1.125:5173'
 
 function ModalCompraExitosa({ compra, emailUsuario, entradas, onCerrar }) {
   const fechaFormateada = compra.fecha_visita
     ? compra.fecha_visita.split('-').reverse().join('/')
     : ''
-  const urlQr = `${API_BASE_URL}/api/v1/compras/${compra.id_compra}`
+  const urlQr = `${FRONTEND_BASE_URL}/#/qrView?id=${compra.id_compra}`
 
   return (
     <div className="modal-overlay">
@@ -240,7 +241,7 @@ function TicketsForm() {
         compra={compraConfirmada}
         emailUsuario={emailUsuario}
         entradas={entradas}
-        onCerrar={onVolver}
+        onCerrar={() => navigate("/")}
       />
     )
   }
@@ -295,6 +296,7 @@ function TicketsForm() {
                   <input
                     type="number"
                     min={0}
+                    max={99}
                     value={entrada.edad}
                     onChange={(e) => handleEntradaChange(indice, 'edad', e.target.value)}
                     required

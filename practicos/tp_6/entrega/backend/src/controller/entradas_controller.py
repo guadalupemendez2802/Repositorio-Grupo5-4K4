@@ -24,6 +24,11 @@ def registrar_compra(req: RegistrarCompraRequest):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
         )
+    except PermissionError as e:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=str(e),
+        )
 
     fecha = datetime.strptime(compra["fecha_visita"], "%d/%m/%Y").date()
 

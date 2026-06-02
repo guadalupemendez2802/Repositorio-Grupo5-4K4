@@ -20,13 +20,7 @@ def comprar_entrada(
 
     entrada_repo: EntradaRepository = EntradaRepository()
 
-    print(fecha_visita)
-
     cantidad_entradas_registradas = entrada_repo.obtener_cantidad_entradas(fecha_visita)
-
-    print('-' * 100)
-    print("cantidad de entradas registradas: ", cantidad_entradas_registradas)
-    print('-' * 100)
 
     if cantidad_entradas_registradas + cantidad_entradas > 100:
         entradas_restantes = 100 - cantidad_entradas_registradas

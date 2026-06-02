@@ -9,10 +9,10 @@ def comprar_entradas(
     metodo_pago: str,
 ):
     validar_usuario(usuario_registrado)
+    validar_cantidad_entradas(cantidad_entradas)
     validar_fecha(fecha_visita)
     validar_disponibilidad(fecha_visita)
     validar_metodo_pago(metodo_pago)
-    validar_cantidad_entradas(cantidad_entradas)
     validar_edades(cantidad_entradas, edades)
     validar_tipos_pase(cantidad_entradas, ids_tipo_pase)
 
@@ -87,6 +87,10 @@ def validar_cantidad_entradas(entradas):
     if entradas > 10:
         raise ValueError(
             "La cantidad de entradas debe ser menor o igual a 10"
+        )
+    elif entradas < 1:
+        raise ValueError(
+            "Debe seleccionar al menos una entrada"
         )
 
 

@@ -114,7 +114,7 @@ def test_error_si_faltan_edades():
             ids_tipo_pase=[1, 1],
         )
 
-def error_si_edad_negativa():
+def test_error_si_edad_negativa():
     with pytest.raises(
         ValueError,
         match="La edad no puede ser negativa"

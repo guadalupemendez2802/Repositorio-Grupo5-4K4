@@ -75,3 +75,35 @@ def test_post_entradas_error_sin_cupo(db_path, seed_base_data):
         "Solo quedan 0 entradas disponibles para el día 03/06/2026."
     )
 
+
+def test_get_entradas_detalle_ok(db_path, seed_base_data):
+    con = sqlite3.connect(db_path)
+    con.execute(
+        "INSERT INTO Compra (usuario_id, fecha_compra, fecha_visita, forma_pago, total) VALUES (?, ?, ?, ?, ?)",
+        (1, "2026-06-01", "03/06/2026", "tarjeta", 200.0),
+    )
+    compra_id = con.execute("SELECT last_insert_rowid()").fetchone()[0]
+
+    con.execute(
+        "INSERT INTO Entrada (compra_id, tipo_pase_id, nombre_visitante, edad_visitante) VALUES (?, ?, ?, ?)",
+        (compra_id, 1, "Usuario Test", 20),
+    )
+    entrada_id_1 = con.execute("SELECT last_insert_rowid()").fetchone()[0]
+
+    con.execute(
+        "INSERT INTO Entrada (compra_id, tipo_pase_id, nombre_visitante, edad_visitante) VALUES (?, ?, ?, ?)",
+        (compra_id, 1, "Usuario Test", 30),
+    )
+    entrada_id_2 = con.execute("SELECT last_insert_rowid()").fetchone()[0]
+
+    con.commit()
+    con.close()
+
+    response = client.get(f"/api/v1/entradas/detalle/{compra_id}")
+
+    assert response.status_code == 200
+    data = response.json()
+    assert {item["id"] for item in data} == {entrada_id_1, entrada_id_2}
+    for item in data:
+        assert item["tipo_pase_id"] == 1
+        assert item["tipo_pase"] == "REGULAR"

@@ -1,13 +1,10 @@
 from __future__ import annotations
 
 from datetime import date, datetime
+from models.entrada import Entrada
 
 from src.database.db import obtener_conexion
 
-
-from typing import TYPE_CHECKING
-if TYPE_CHECKING:
-    from models.entrada import Entrada
 
 class EntradaRepository:
     @staticmethod
@@ -63,3 +60,28 @@ class EntradaRepository:
 
         con.close()
         return cantidad
+
+    @staticmethod
+    def obtener_entradas_por_id_compra(id_compra: int) -> list[Entrada]:
+        con = obtener_conexion()
+        cursor = con.cursor()
+
+        cursor.execute(
+            """
+            SELECT *
+            FROM Entrada e
+            WHERE e.compra_id = ?
+            """,
+            (id_compra,)
+        )
+
+        entradas = cursor.fetchall()
+
+        con.close()
+
+        list_entradas = []
+
+        for entrada in entradas:
+            list_entradas.append(Entrada(entrada['id'], entrada['compra_id'], entrada['tipo_pase_id'], entrada['nombre_visitante'], entrada['edad_visitante']))
+
+        return list_entradas

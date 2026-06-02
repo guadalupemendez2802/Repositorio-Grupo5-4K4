@@ -3,6 +3,7 @@ from datetime import datetime
 import pytest
 
 from src.services import comprar_entrada_service
+from src.services.comprar_entrada_service import validar_mail
 
 
 class DummyUser:
@@ -238,8 +239,8 @@ def test_error_si_no_hay_cupo(monkeypatch):
     with pytest.raises(
         ValueError,
         match=(
-            "No hay suficientes entradas disponibles para la fecha seleccionada\. "
-            "Solo quedan 1 entradas disponibles para el día 03/06/2026\."
+            r"No hay suficientes entradas disponibles para la fecha seleccionadacl. "
+            r"Solo quedan 1 entradas disponibles para el día 03/06/2026\."
         ),
     ):
         comprar_entrada_service.comprar_entrada(
@@ -296,3 +297,21 @@ def test_error_si_tipo_pase_invalido(monkeypatch):
             ids_tipo_pase=[99],
         )
 
+
+def test_validar_mail_error_si_vacio():
+    with pytest.raises(ValueError, match="Debe ingresar un correo electrónico"):
+        validar_mail("  ")
+
+
+def test_validar_mail_error_si_sin_arroba():
+    with pytest.raises(ValueError, match="El correo electrónico debe contener '@'"):
+        validar_mail("usuario.test.com")
+
+
+def test_validar_mail_error_si_sin_dominio():
+    with pytest.raises(ValueError, match="dominio válido"):
+        validar_mail("usuario@dominio")
+
+
+def test_validar_mail_ok_formato_valido():
+    validar_mail("user@test.com")

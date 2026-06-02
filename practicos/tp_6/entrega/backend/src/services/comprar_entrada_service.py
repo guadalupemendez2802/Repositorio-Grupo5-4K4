@@ -28,6 +28,8 @@ def comprar_entrada(
                          f" Solo quedan {entradas_restantes} entradas disponibles para el día {fecha_visita}.")
 
 
+    validar_mail(email_usuario)
+
     usuario_registrado, user_data = comprobar_usuario(email_usuario)
 
     repo_tipos = TipoPaseRepository()
@@ -56,7 +58,7 @@ def comprar_entrada(
                 precio = 0 # menores de 3 años no pagan
             case _ if 3 < edades[i] <= 15:
                 precio = tipo_pase.precio * 0.5 # 50% off
-            case _ if 16 < edades[i] < 60:
+            case _ if 15 < edades[i] < 60:
                 precio = tipo_pase.precio # sin descuento
             case _ if edades[i] >= 60:
                 precio = tipo_pase.precio * 0.5 # 50% off
@@ -95,3 +97,18 @@ def comprar_entrada(
     resultado["total"] = total
 
     return resultado
+
+
+def validar_mail(email):
+    if email is None or email.strip() == "":
+        raise ValueError(
+            "Debe ingresar un correo electrónico"
+        )
+    if "@" not in email:
+        raise ValueError(
+            "El correo electrónico debe contener '@'"
+        )
+    if "." not in email.split("@")[1]:
+        raise ValueError(
+            "El correo electrónico debe contener un dominio válido después de '@'"
+        )

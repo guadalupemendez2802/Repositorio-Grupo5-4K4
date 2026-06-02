@@ -239,8 +239,8 @@ def test_error_si_no_hay_cupo(monkeypatch):
     with pytest.raises(
         ValueError,
         match=(
-            r"No hay suficientes entradas disponibles para la fecha seleccionadacl. "
-            r"Solo quedan 1 entradas disponibles para el día 03/06/2026\."
+            r"No hay suficientes entradas disponibles para la fecha seleccionada. "
+            r"Solo quedan 1 entradas disponibles para el día 03/06/2026."
         ),
     ):
         comprar_entrada_service.comprar_entrada(

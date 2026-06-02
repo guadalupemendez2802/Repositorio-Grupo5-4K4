@@ -138,7 +138,7 @@ def test_error_si_edad_supera_cien():
             usuario_registrado=True,
             fecha_visita="03/06/2026",
             cantidad_entradas=2,
-            edades=[102, 30],
+            edades=[100, 30],
             metodo_pago="tarjeta",
             ids_tipo_pase=[1, 1],
         )

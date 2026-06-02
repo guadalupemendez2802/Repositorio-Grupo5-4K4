@@ -9,11 +9,13 @@ import {
   formatearPrecio,
 } from '../utils/preciosEntrada'
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+
 function ModalCompraExitosa({ compra, emailUsuario, entradas, onCerrar }) {
   const fechaFormateada = compra.fecha_visita
     ? compra.fecha_visita.split('-').reverse().join('/')
     : ''
-  const urlQr = `http://localhost:8000/api/v1/compras/${compra.id_compra}`
+  const urlQr = `${API_BASE_URL}/api/v1/compras/${compra.id_compra}`
 
   return (
     <div className="modal-overlay">
@@ -62,6 +64,23 @@ function ModalCompraExitosa({ compra, emailUsuario, entradas, onCerrar }) {
   )
 }
 
+function ModalErrorCompra({ mensaje, onCerrar }) {
+  return (
+    <div className="modal-overlay">
+      <div className="modal-contenido modal-contenido--error" role="alertdialog" aria-modal="true" aria-label="Error en la compra">
+        <p className="modal-error-icon" aria-hidden="true">
+          !
+        </p>
+        <h2>No se pudo completar la compra</h2>
+        <p className="modal-error-mensaje">{mensaje}</p>
+        <button className="btn-primary" onClick={onCerrar}>
+          Entendido
+        </button>
+      </div>
+    </div>
+  )
+}
+
 const entradaVacia = () => ({ edad: '', tipoPase: 'regular' })
 
 const tipoPasePorId = {
@@ -78,13 +97,67 @@ function formatearFecha(fechaIso) {
   return `${dia}/${mes}/${anio}`
 }
 
+function obtenerMensajeError(mensajeCrudo, fallback = 'No se pudo completar la compra') {
+  if (typeof mensajeCrudo !== 'string') {
+    return fallback
+  }
+
+  const texto = mensajeCrudo.trim()
+
+  if (!texto) {
+    return fallback
+  }
+
+  try {
+    const data = JSON.parse(texto)
+
+    if (typeof data === 'string') {
+      return data
+    }
+
+    if (data && typeof data === 'object') {
+      return data.detail || data.message || data.error || fallback
+    }
+  } catch {
+    const detailMatch = texto.match(/^(?:detail\s*:\s*)?(.+)$/i)
+
+    return detailMatch ? detailMatch[1].trim() : texto
+  }
+
+  return texto
+}
+
+async function obtenerMensajeErrorDeRespuesta(response) {
+  const fallback = `No se pudo completar la compra (${response.status})`
+  const contentType = response.headers.get('content-type') || ''
+
+  if (contentType.includes('application/json')) {
+    try {
+      const data = await response.json()
+
+      if (typeof data === 'string') {
+        return obtenerMensajeError(data, fallback)
+      }
+
+      if (data && typeof data === 'object') {
+        return data.detail || data.message || data.error || fallback
+      }
+    } catch {
+      return fallback
+    }
+  }
+
+  const texto = await response.text()
+  return obtenerMensajeError(texto, fallback)
+}
+
 function TicketsForm({ onVolver }) {
   const [emailUsuario, setEmailUsuario] = useState('')
   const [fecha, setFecha] = useState('')
   const [cantidad, setCantidad] = useState(1)
   const [entradas, setEntradas] = useState([entradaVacia()])
   const [formaPago, setFormaPago] = useState('')
-  const [estadoEnvio, setEstadoEnvio] = useState('')
+  const [errorCompra, setErrorCompra] = useState('')
   const [enviando, setEnviando] = useState(false)
   const [compraConfirmada, setCompraConfirmada] = useState(null)
 
@@ -106,7 +179,7 @@ function TicketsForm({ onVolver }) {
     if (fecha) {
       const { anio, mes, dia } = parseIso(fecha)
       if (!puedeElegirFecha(anio, mes, dia)) {
-        setEstadoEnvio(motivoFechaInvalida(fecha) || 'La fecha elegida no es valida!')
+        setErrorCompra(motivoFechaInvalida(fecha) || 'La fecha elegida no es valida!')
         return
       }
     }
@@ -122,7 +195,7 @@ function TicketsForm({ onVolver }) {
 
     try {
       setEnviando(true)
-      setEstadoEnvio('')
+      setErrorCompra('')
 
       const response = await fetch('/api/v1/entradas/', {
         method: 'POST',
@@ -133,14 +206,17 @@ function TicketsForm({ onVolver }) {
       })
 
       if (!response.ok) {
-        const errorText = await response.text()
-        throw new Error(errorText || 'No se pudo completar la compra')
+        throw new Error(await obtenerMensajeErrorDeRespuesta(response))
       }
 
       const data = await response.json()
       setCompraConfirmada(data)
     } catch (error) {
-      setEstadoEnvio(error instanceof Error ? error.message : 'Error inesperado al enviar la compra')
+      setErrorCompra(
+        error instanceof Error
+          ? obtenerMensajeError(error.message)
+          : 'Error inesperado al enviar la compra',
+      )
     } finally {
       setEnviando(false)
     }
@@ -165,6 +241,10 @@ function TicketsForm({ onVolver }) {
         onCerrar={onVolver}
       />
     )
+  }
+
+  if (errorCompra) {
+    return <ModalErrorCompra mensaje={errorCompra} onCerrar={() => setErrorCompra('')} />
   }
 
   return (
@@ -267,18 +347,6 @@ function TicketsForm({ onVolver }) {
           </button>
         </div>
       </form>
-
-      {estadoEnvio ? (
-        <p
-          className={`form-mensaje ${
-            estadoEnvio.includes('correctamente')
-              ? 'form-mensaje--exito'
-              : 'form-mensaje--error'
-          }`}
-        >
-          {estadoEnvio}
-        </p>
-      ) : null}
     </section>
   )
 }

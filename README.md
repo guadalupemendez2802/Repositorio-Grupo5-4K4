@@ -159,6 +159,7 @@ git tag -a LB_1 -m "Línea base 1"
 | **LB_3**    | 02/06/2026  | Entrega de **TP6 - TDD**. Se realizó el desarrollo de la US comprar entrada utilizando TDD|
 | **LB_4**    | 17/06/2026  | Entrega de **TP10 - Kanban**. Se realizó la actividad kanban  en clase|
 | **LB_5**    | 17/06/2026  | Entrega de **TP11 - Retrospective**. Se desarrolló y presentó la retrospectiva grupal|
+| **LB_6**    | 23/06/2026  | Entrega de **TP12 - Design Thinking**. Se desarrolló y presentó el diseño de la problemática "Distribución de tareas"|
 ---
 
 ## Herramienta a utilizar para SCM

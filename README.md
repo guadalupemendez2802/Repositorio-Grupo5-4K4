@@ -11,8 +11,6 @@
 **Curso:** 4K4  
 **Grupo:** 5
 
-**Repositorio:** https://github.com/guadalupemendez2802/Repositorio-Grupo5-4K4
-
 ---
 
 ## Integrantes del Grupo
@@ -48,7 +46,7 @@ Repositorio-Grupo5-4K4/
 │   │    
 │   ├── presentaciones_clases/     # Diapositivas y presentaciones de clase
 │   │       
-│   ├── clases_grabadas/
+│   ├── clases_grabadas/    
 │   │
 │   └── templates_para_practicos_y_parciales/  # Plantillas oficiales
 │       ├── parciales/
@@ -115,13 +113,13 @@ Repositorio-Grupo5-4K4/
 | Entrega TI                  | `entrega_<ti>.<ext>`                                |
 | Código fuente               | `nombre.<ext>`                                      |
 | Bibliografía                | `b_<nombre_libro>.pdf`                              |
-| Notas de Clases             | `notas_<mm-dd>.<ext>`                               |
+| Notas de Clases             | `notas_tema_<mm-dd>.<ext>`                          |
 | Resúmenes                   | `resumen_parc_<nro>.<ext>`                          |
 | Cronograma                  | `cronograma_<año>_<mm-dd>.<ext>`                    |
 | Templates                   | `temp_<nombre_template>.<ext>`                      |
 | Presentaciones de Clase     | `<nro_presentacion>_<nombre_presentacion>.<ext>`    |
 | Clases Grabadas             | `clases_grabadas_<año>.xlsx`                        |
-| Instrucciones               | `instrucciones.md`                                  |
+
 
 ---
 
@@ -143,7 +141,7 @@ Repositorio-Grupo5-4K4/
 
 ## Criterio de Línea Base
 
-Cada línea base será definida luego de la entrega de un trabajo práctico grupal evaluable. Consideramos que con la entrega el estado del proyecto ha sido revisado y validado por todos los integrantes del grupo.
+Cada línea base será definida luego de la entrega de un trabajo práctico grupal evaluable en clase. Esto se debe a que consideramos que con la entrega el estado del proyecto ha sido revisado y validado por los integrantes del grupo y los Product Owners (Profesores).
 
 Las Líneas bases serán identificadas con la siguiente etiqueta: `LB_N`
 
@@ -161,6 +159,7 @@ git tag -a LB_1 -m "Línea base 1"
 | **LB_5**    | 17/06/2026  | Entrega de **TP11 - Retrospective**. Se desarrolló y presentó la retrospectiva grupal|
 | **LB_6**    | 23/06/2026  | Entrega de **TP12 - Design Thinking**. Se desarrolló y presentó el diseño de la problemática "Distribución de tareas"|
 ---
+* Nota: Tenemos una LB en la misma fecha, esto se debe a una consulta a los PO sobre la nota del mismo trabajo práctico evaluable, por ello tras su respuesta, cerramos la LB junto a la entrega del TP 11 que se realizó en base al cronograma de la materia.
 
 ## Herramienta a utilizar para SCM
 
